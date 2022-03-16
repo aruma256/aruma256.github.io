@@ -1,5 +1,5 @@
 ---
-title: "GitHub Pagesで手軽にブログを始めよう"
+title: "GitHub Pagesで手軽にブログを始めよう(Jekyll + Minimal Mistakes)"
 categories:
     - blog
 tags:
