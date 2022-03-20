@@ -115,9 +115,3 @@ category_archive:
 tag_archive:
   type: liquid
   path: /tags/
-
-analytics:
-  provider: "google-gtag"
-  google:
-    tracking_id: "G-Q0KBBGX3BJ"
-    anonymize_ip: true
