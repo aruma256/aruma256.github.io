@@ -94,6 +94,8 @@ defaults:
     values:
       layout: single
       classes: wide
+      toc: true
+      toc_label: "目次"
       author_profile: true
       show_date: true
       read_time: false
