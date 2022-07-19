@@ -27,6 +27,10 @@ public static void test_concat() throws Exception {
 }
 ```
 
+以下、経緯や思考など
+
+---
+
 # 実行環境
 
 ```
