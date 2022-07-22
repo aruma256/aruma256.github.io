@@ -13,12 +13,12 @@
 # you will see them accessed via {{ site.title }}, {{ site.email }}, and so on.
 # You can create any custom variable you would like, and they will be accessible
 # in the templates via {{ site.myvariable }}.
-title: Arumaのブログ
+title: arumaのブログ
 email:
 description: >- # this means to ignore newlines until "baseurl:"
-  Arumaのブログです
-twitter_username: Aruma256
-github_username: Aruma256
+  arumaのブログです
+twitter_username: aruma256
+github_username: aruma256
 minimal_mistakes_skin: default
 search: true
 
@@ -57,7 +57,7 @@ plugins:
   - jekyll-include-cache
 
 author:
-  name   : "Aruma256"
+  name   : "aruma256"
   avatar : "/assets/images/bio-photo.jpg"
   bio    : "arumaです"
   links:
@@ -66,10 +66,10 @@ author:
     #   url: "https://"
     - label: "Twitter"
       icon: "fab fa-fw fa-twitter-square"
-      url: "https://twitter.com/Aruma256"
+      url: "https://twitter.com/aruma256"
     - label: "GitHub"
       icon: "fab fa-fw fa-github"
-      url: "https://github.com/Aruma256"
+      url: "https://github.com/aruma256"
     # - label: "Instagram"
     #   icon: "fab fa-fw fa-instagram"
     #   url: "https://instagram.com/"
@@ -78,10 +78,10 @@ footer:
   links:
     - label: "Twitter"
       icon: "fab fa-fw fa-twitter-square"
-      url: "https://twitter.com/Aruma256"
+      url: "https://twitter.com/aruma256"
     - label: "GitHub"
       icon: "fab fa-fw fa-github"
-      url: "https://github.com/Aruma256"
+      url: "https://github.com/aruma256"
     # - label: "Instagram"
     #   icon: "fab fa-fw fa-instagram"
     #   url: "https://instagram.com/"

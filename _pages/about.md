@@ -3,4 +3,4 @@ permalink: /about/
 title: "About"
 ---
 
-Aruma256のブログです
+aruma256のブログです
