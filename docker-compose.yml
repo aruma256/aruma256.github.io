@@ -1,0 +1,9 @@
+services:
+  blog:
+    build: .
+    ports:
+      - 80:80
+    volumes:
+      - .:/src
+    working_dir: /src
+    command: bundle exec jekyll s --host=0.0.0.0 --port=80
