@@ -14,12 +14,15 @@ before
 
 <img src="/assets/2022/2022-07-29-github-linguist-count-md-files/linguist-stat-before.png" width="50%" />
 
+多数あるMarkdownファイルがカウントされず、Gemfileなどわずかなコード片から言語統計が作られてしまっている
+
 after
 
 <img src="/assets/2022/2022-07-29-github-linguist-count-md-files/linguist-stat-after.png" width="50%" />
 
-（リポジトリ一覧の言語表示もJavaからMarkdownに変わった）
 <img src="/assets/2022/2022-07-29-github-linguist-count-md-files/linguist-summary-after.png" width="50%" />
+
+リポジトリ一覧の言語表示もJavaからMarkdownに変わった
 
 
 
