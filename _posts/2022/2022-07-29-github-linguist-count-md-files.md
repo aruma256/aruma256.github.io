@@ -1,5 +1,5 @@
 ---
-title: "MarkdownファイルをGitHubリポジトリ言語統計のカウント対象する"
+title: "MarkdownファイルをGitHubリポジトリ言語統計のカウント対象にする"
 categories:
     - blog
 tags:
