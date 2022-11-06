@@ -73,6 +73,9 @@ author:
     # - label: "Instagram"
     #   icon: "fab fa-fw fa-instagram"
     #   url: "https://instagram.com/"
+    - label: "Support"
+      icon: "far fa-fw fa-heart"
+      url: "https://github.com/sponsors/aruma256"
 
 footer:
   links:
@@ -85,6 +88,9 @@ footer:
     # - label: "Instagram"
     #   icon: "fab fa-fw fa-instagram"
     #   url: "https://instagram.com/"
+    - label: "Support"
+      icon: "far fa-fw fa-heart"
+      url: "https://github.com/sponsors/aruma256"
 
 defaults:
   # _posts
