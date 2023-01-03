@@ -111,3 +111,7 @@ Expression Menuからシェーダーを切り替えられるようにする手�
     ![](/assets/2023/2023-01-03-vrchat-switch-shader-from-exmenu/conditions_2.png)
 
 あとはアップロードすれば完了です。
+
+# 動作例
+
+<blockquote class="twitter-tweet"><p lang="ja" dir="ltr">ファーシェーダーのオンオフ実演 <a href="https://t.co/oS8KaO4LTQ">pic.twitter.com/oS8KaO4LTQ</a></p>&mdash; aruma_vr (@aruma256_vr) <a href="https://twitter.com/aruma256_vr/status/1610114048783450112?ref_src=twsrc%5Etfw">January 3, 2023</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
