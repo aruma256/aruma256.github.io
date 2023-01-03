@@ -39,12 +39,12 @@ Expression Menuからシェーダーを切り替えられるようにする手�
 ![](/assets/2023/2023-01-03-vrchat-switch-shader-from-exmenu/select_material.png)
 1. マテリアルを1度クリックし、Ctrl+D で複製する。わかりやすい名前に変更しておく。  
 ![](/assets/2023/2023-01-03-vrchat-switch-shader-from-exmenu/duplicate_material.png)
-1. アバターBodyの `Materials` から、作成したマテリアルを適用する。
+1. アバターBodyの `Materials` から、作成したマテリアルを適用する。  
 ![](/assets/2023/2023-01-03-vrchat-switch-shader-from-exmenu/apply_new_material.png)
 1. 新しいマテリアルに、目的のシェーダーを適用する。
     * シェーダーのパラメータもここで調整します。
 
-例では、liltoonファーの激重設定を使います。
+この例では、liltoonファーの激重設定を使います。  
 ![](/assets/2023/2023-01-03-vrchat-switch-shader-from-exmenu/fur_shader.jpg)
 
 （[ファーシェーダーの適用メモはこちら](https://aruma256.github.io/blog/2022/11/02/liltoon-fur.html)）
@@ -67,43 +67,47 @@ Expression Menuからシェーダーを切り替えられるようにする手�
     ![](/assets/2023/2023-01-03-vrchat-switch-shader-from-exmenu/record_animation.png)
     * 0フレーム目のみが存在するアニメーションファイルが作成される  
     ![](/assets/2023/2023-01-03-vrchat-switch-shader-from-exmenu/animation_created.png)
+    * 例では `disable_fur.anim` とした
 1. 元の状態を指定するためのアニメーションファイルを作成する
     * `Create New Clip...`から新規作成する  
     ![](/assets/2023/2023-01-03-vrchat-switch-shader-from-exmenu/create_revert_animation.png)
-    * 同様の手順でアニメーションファイルを作成する
+    * 「赤丸 → マテリアルを一度変更し、戻す → 赤丸」で現在のマテリアルを指定するアニメーションを作る
+    * 例では `enable_fur.anim` とした
 
 以降、「ExMenuから適用Animationを切り替えられるようにする」という操作手順の説明です。
 
 ## ExpressionMenuから適用Animationを切り替えられるようにする
 
-1. アバターの Expression - Parameters に設定されているファイルを開く
+1. アバターの Expression - Parameters に設定されているファイルを開く  
 ![](/assets/2023/2023-01-03-vrchat-switch-shader-from-exmenu/avatar_expressions.png)
 1. Expression Parameter にBool型のパラメータを追加する  
 ![](/assets/2023/2023-01-03-vrchat-switch-shader-from-exmenu/add_param.png)
     * この例では `DisableFur` とした（後で使う）
     * ワールド移動や再起動をしてもシェーダー選択を維持してほしい場合のみ`Saved`のチェックを入れる
-1. アバターの Expression - Menu に設定されているファイルを開く
+1. アバターの Expression - Menu に設定されているファイルを開く  
 ![](/assets/2023/2023-01-03-vrchat-switch-shader-from-exmenu/avatar_expressions.png)
-1. Expression Menuにシェーダー変更用の項目を追加する
+1. Expression Menuにシェーダー変更用の項目を追加する  
 ![](/assets/2023/2023-01-03-vrchat-switch-shader-from-exmenu/exmenu.png)
+    * Name は任意
     * Type は`Toggle`
     * Parameter は先程作成したExpressionParameterのパラメータのものを選ぶ（例では`DisableFur`）
 1. アバターの Playable Layers - FX に設定されている項目を開く
-1. Animator - Parameters の＋ボタンを押し、先程作成したパラメータを追加する（例では`DisableFur`）
+1. Animator - Parameters の＋ボタン（Bool）から、先程作成したパラメータを追加する（例では`DisableFur`）  
 ![](/assets/2023/2023-01-03-vrchat-switch-shader-from-exmenu/fx_parameter.png)
-1. Animator - Layers の＋ボタンを押し、レイヤーを追加する
+1. Animator - Layers の＋ボタンを押し、レイヤーを追加する  
 ![](/assets/2023/2023-01-03-vrchat-switch-shader-from-exmenu/create_layer.png)
     * **［重要］追加したレイヤーの Weight を1にする**
-1. Stateを2つ追加し、双方向のTransitionを設定する
+1. Stateを2つ追加し、双方向のTransitionを設定する  
 ![](/assets/2023/2023-01-03-vrchat-switch-shader-from-exmenu/states.png)
     * Stateは 余白を右クリック → Create State → Empty で作成できる
     * Transitionは Stateをクリック → Make Transition で作成できる
 1. 2つのStateに、作成したアニメーションを適用する
     * Stateを選び、Motionに作成したアニメーションをドラッグアンドドロップ
+    * 例では、`enable_fur` と `disable_fur`
 1. 2つのTransitionに、パラメータによる遷移条件を追加する
-    * 行きのTransitionを選び、Conditionsに `パラメータ名 true` を追加する
+    * 行きのTransitionを選び、Conditionsに `パラメータ名 true` を追加する  
     ![](/assets/2023/2023-01-03-vrchat-switch-shader-from-exmenu/conditions.png)
-    * 戻りのTransitionを選び、Conditionsに `パラメータ名 false` を追加する
+    * 戻りのTransitionを選び、Conditionsに `パラメータ名 false` を追加する  
     ![](/assets/2023/2023-01-03-vrchat-switch-shader-from-exmenu/conditions_2.png)
 
 あとはアップロードすれば完了です。
