@@ -47,7 +47,7 @@ Expression Menuからシェーダーを切り替えられるようにする手�
 この例では、liltoonファーの激重設定を使います。  
 ![](/assets/2023/2023-01-03-vrchat-switch-shader-from-exmenu/fur_shader.jpg)
 
-（[ファーシェーダーの適用メモはこちら](https://aruma256.github.io/blog/2022/11/02/liltoon-fur.html)）
+（[ファーシェーダーの適用メモはこちら](/blog/2022/11/02/liltoon-fur.html)）
 
 以降、「マテリアル切り替えのアニメーションを作成し、ExMenuから再生できるようにする」という操作手順の説明です。
 
