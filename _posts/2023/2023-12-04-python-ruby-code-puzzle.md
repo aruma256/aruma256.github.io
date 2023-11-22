@@ -3,7 +3,8 @@ title: "PythonでもRubyでも実行できるが異なる出力となるコー�
 categories:
     - blog
 tags:
-    - AtCoder
+    - Python
+    - Ruby
 toc: true
 ---
 
@@ -38,6 +39,11 @@ print("Hello, world!")
 以下、答えを含みます。
 
 # 作ってみた
+
+検証は以下のバージョンで行いました。
+
+* Python: 3.12.0
+* Ruby: 3.2.2
 
 ## Python と Ruby　で共通のコードを考える
 
@@ -119,6 +125,16 @@ end
 
 **list / Array に対する、 `+=` 演算子の挙動です。**
 
+Pythonにおける `list` は、ミュータブルなシーケンス型の1つです。  
+ミュータブルなシーケンス `s` とイテラブルな `t` があるとき、`s += t` はシーケンス `s` を拡張して `t` の要素を追加する操作、すなわち `s.extend(t)` と等価です。
+参考: [https://docs.python.org/ja/3.12/library/stdtypes.html#mutable-sequence-types](https://docs.python.org/ja/3.12/library/stdtypes.html#mutable-sequence-types)
+
+一方、Rubyにおける `s += t` は単なる自己代入、すなわち `s = s + t` と等価です。
+参考: [https://docs.ruby-lang.org/ja/3.2/doc/spec=2foperator.html#selfassign](https://docs.ruby-lang.org/ja/3.2/doc/spec=2foperator.html#selfassign)
+つまり、 `s` と `t` がともに `Array` の場合、`s` には新しく作成された `Array` が代入されます。
+
+この差を使えば、同一コードで異なるオブジェクトを参照させることができます。
+
 ```python
 # Python
 a = [1, 2]
@@ -135,4 +151,23 @@ a += [3, 4]
 print(b)  # [1, 2]
 ```
 
-同じコードですが、出力が異なるようにできました。
+## 完成したコード
+
+以上を踏まえて、完成したコードは以下の通りです。  
+Pythonでは `Python`、Rubyでは `Ruby` と出力されます。
+
+```python
+# Python
+a = b = ["Ruby\n"]
+a += ["Python"]
+print(b[-1])
+```
+
+```ruby
+# Ruby
+a = b = ["Ruby\n"]
+a += ["Python"]
+print(b[-1])
+```
+
+Pythonの `print` はデフォルトで改行される（デフォルトキーワード引数 `end='\n'` ）ことに合わせるため、`"Ruby"` には `"\n"` をつけています。
