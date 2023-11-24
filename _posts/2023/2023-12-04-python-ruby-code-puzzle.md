@@ -1,5 +1,5 @@
 ---
-title: "PythonでもRubyでも実行できるが異なる出力となるコードを考える"
+title: "PythonとしてもRubyとしても実行できるが出力は異なるコードを考えてみた"
 categories:
     - blog
 tags:
@@ -8,139 +8,114 @@ tags:
 toc: true
 ---
 
-PythonとしてもRubyとしても文法的に正しく実行もできるが、出力が異なるコードを考えてみました。
+PythonとしてもRubyとしても文法的に正しく実行もできるが、出力は異なるというコードを考えてみました。
 
 # きっかけ
 
-登場人物
-
-* 私(aruma): Python が好き。当時はRubyを全く知らなかった。
-* Bさん: Ruby が好き。当時はPythonを全く知らなかった。
-
-実話です。  
-ある日、Bさんに「Python の "Hello, world!" を見せて」と言われました。  
-私は以下のコードを見せました。
+実話です。ある日、Rubyが好きな友人に「Python の "Hello, world!" はどう書くの？」と尋ねられた私は、以下のコードを書きました。
 
 ```python
 print("Hello, world!")
 ```
 
-これを見たBさんは、「このコード、そのままRubyでも動くな」と言いました。  
-（へぇ〜。きっと文法似てるんだな。）
+これを見て友人は「このコード、Rubyでもそのまま動くよ」と言いました。  
+Rubyを全く知らなかった当時の私はすぐにオンラインの実行環境で試し、確かに同じ結果が得られることに驚きました。
 
-あれから2年が経ち、私はRubyを書くようになりました。  
-（文法、全然違うわ）
-
+あれから数年、私は業務でもRubyを使うようになりました。
 そして最近、ふとこの出来事を思い出したとき、こんなことを考えました。
 
-**PythonとしてもRubyとしても文法的に正しく実行もできるが、出力が異なるコードって作れるだろうか？**
+**「PythonとしてもRubyとしても文法的に正しく実行もできるが、出力が異なるコードは作れるだろうか？」**
 
-みなさんも、ぜひ考えてみてください。  
-以下、答えを含みます。
+みなさんも是非考えてみてください。
 
 # 作ってみた
 
-検証は以下のバージョンで行いました。
+本記事に記載のコードは、以下の言語バージョンで動作確認を行いました。
 
 * Python: 3.12.0
 * Ruby: 3.2.2
 
-## Python と Ruby　で共通のコードを考える
+本記事では、PythonでもRubyでも実行できるコードを "共通コード" と呼ぶことにします。
 
-まずは、PythonとRubyで共通のコードを考えました。
+## Python と Ruby　の記法が共通である要素
 
-整数と文字列の記述および代入などは、特殊なことをしない限りは共通コードになります。
+まずは、PythonとRubyで記法が共通している要素を考えました。
+
+整数や文字列の記述・代入などは、特殊なことをしない限りは共通コードになります。
 
 ```python
-# Python
+# Python and Ruby
 a = 1
 a += 3
 b = "Hello, world!"
 ```
 
-```ruby
-# Ruby
-a = 1
-a += 3
-b = "Hello, world!"
-```
-
-また、関数呼び出しも共通コードにできます。
+可変長配列（Pythonの `list` 、Rubyの `Array` ）の作成及び要素へのアクセスも、共通コードにできます。
 
 ```python
-# Python
+# Python　and Ruby
+a = [1, 2, 3]
+a[1] = 5
+```
+
+また、関数呼び出しも以下の記法で共通コード化が可能です。
+
+```python
+# Python and Ruby
 func("sample")
 ```
 
-```ruby
-# Ruby
-func("sample")
-```
+## Python と Ruby　で記法が異なる要素
 
-Pythonで言う list、Rubyで言う Array も共通コードにできます。
-
-```python
-# Python
-a = [1, 2, 3]
-```
-
-```ruby
-# Ruby
-a = [1, 2, 3]
-```
-
-## Python と Ruby　で異なるコードを考える
-
-真理値やif文、関数定義などは文法が異なります。  
+真理値や条件分岐、関数定義などは記法が異なります。
 つまり、今回これらの要素は使えません。
 
 ```python
 # Python
-def func(n):
-    if n > 0:
+def func(n, m):     # セミコロンをつける
+    if n == 1:
+        return True # `True` (`true`ではない)
+    elif m == 2:    # `elif` (`elsif`ではない)
         return True
-    elif n == 0:
-        return False
     else:
-        return True
+        return False
 ```
 
 ```ruby
 # Ruby
-def func(n)
-    if n > 0
+def func(n, m)       # セミコロンをつけない
+    if n == 1
+        return true  # `true` (`True`ではない)
+    elsif m == 2     # `elsif` (`elif`ではない)
         return true
-    elsif n == 0
-        return false
     else
-        return true
-    end
+        return false
+    end              # `end` をつける
 end
 ```
 
-## Python と Ruby　で異なる出力を考える
+## 共通コードのうち異なる挙動をするものを探す
 
-ここまで挙げた共通コードの中で、PythonとRubyで挙動が異なるものを探します。  
-うーーーん...と考えてみると、1つ思いつきました。
-
+ここまで挙げた共通コードの中からPythonとRubyで挙動が異なるものを探してみると、1つ見つかりました。  
 **list / Array に対する、 `+=` 演算子の挙動です。**
 
 Pythonにおける `list` は、ミュータブルなシーケンス型の1つです。  
-ミュータブルなシーケンス `s` とイテラブルな `t` があるとき、`s += t` はシーケンス `s` を拡張して `t` の要素を追加する操作、すなわち `s.extend(t)` と等価です。
+通常、ミュータブルなシーケンス `s` とイテラブル `t` があるとき、`s += t` はシーケンス `s` を拡張して `t` の要素を追加する操作、すなわち `s.extend(t)` （Rubyでの `s.concat(t)`）と等価です。
 参考: [https://docs.python.org/ja/3.12/library/stdtypes.html#mutable-sequence-types](https://docs.python.org/ja/3.12/library/stdtypes.html#mutable-sequence-types)
 
 一方、Rubyにおける `s += t` は単なる自己代入、すなわち `s = s + t` と等価です。
 参考: [https://docs.ruby-lang.org/ja/3.2/doc/spec=2foperator.html#selfassign](https://docs.ruby-lang.org/ja/3.2/doc/spec=2foperator.html#selfassign)
 つまり、 `s` と `t` がともに `Array` の場合、`s` には新しく作成された `Array` が代入されます。
 
-この差を使えば、同一コードで異なるオブジェクトを参照させることができます。
+この挙動の違いを使えば、共通コード内の変数から言語によって異なるオブジェクトを参照させることができ、結果として言語によって異なる出力を得られます。
 
 ```python
 # Python
 a = [1, 2]
 b = a
 a += [3, 4]
-print(b)  # [1, 2, 3, 4]
+
+print(b is a)  # True （bとaは同一オブジェクトを参照）
 ```
 
 ```ruby
@@ -148,26 +123,29 @@ print(b)  # [1, 2, 3, 4]
 a = [1, 2]
 b = a
 a += [3, 4]
-print(b)  # [1, 2]
+
+print(b.equal?(a))  # false （bとaは異なるオブジェクトを参照）
 ```
 
 ## 完成したコード
 
-以上を踏まえて、完成したコードは以下の通りです。  
-Pythonでは `Python`、Rubyでは `Ruby` と出力されます。
+以上をふまえて、完成したコードを以下に示します。
+Pythonでは `Python`、Rubyでは `Ruby` と1行出力されます。
 
 ```python
-# Python
+# Python and Ruby
 a = b = ["Ruby\n"]
 a += ["Python"]
 print(b[-1])
 ```
+Pythonの `print` はデフォルトキーワード引数 `end='\n'` を持つため、末尾に改行文字が付いた出力となります。
+出力形式を揃えるため、Ruby用の出力文字列には `"\n"` をつけています。
 
-```ruby
-# Ruby
-a = b = ["Ruby\n"]
-a += ["Python"]
-print(b[-1])
+実際に `common.pyrb` というファイル名で保存しPythonとRubyで実行すると、以下のようになりました。
+
+```bash
+$ python common.pyrb 
+Python
+$ ruby common.pyrb 
+Ruby
 ```
-
-Pythonの `print` はデフォルトで改行される（デフォルトキーワード引数 `end='\n'` ）ことに合わせるため、`"Ruby"` には `"\n"` をつけています。
