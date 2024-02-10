@@ -12,7 +12,7 @@ ChatGPT Plus からの移行先として、LibreChat を触ってみました。
 # 背景
 
 ChatGPT Plus は、 OpenAI が提供する ChatGPT のサブスクリプションプランです。月額$20で、ピークタイムのアクセス、高速なレスポンス、新機能の早期アクセスなどが提供されます。  
-2024年2月10日現在では、
+2024年2月14日現在では、
 
 * GPT-4 へのアクセス（40メッセージ/3時間 の上限あり）
 * GPTs の作成・利用
@@ -20,7 +20,7 @@ ChatGPT Plus は、 OpenAI が提供する ChatGPT のサブスクリプショ�
 
 が提供されています。
 
-今となっては「便利」を通り過ぎて「常に使っているのが普通」となった ChatGPT (Plus) ですが、
+今となっては「便利」を通り過ぎて常時使っているレベルとなった ChatGPT (Plus) ですが、
 
 * 40メッセージ/3時間 の上限を超えて使いたい
 * Temperature など、APIでのみ設定可能なパラメータを自由に設定したい
@@ -29,3 +29,41 @@ ChatGPT Plus は、 OpenAI が提供する ChatGPT のサブスクリプショ�
   * **会話履歴を自分の管理下におきたい** （エクスポート機能ではなく）
 
 といった理由で、ChatGPT Plus から 「ChatGPT API を利用可能なローカルで動かせるクライアントソフトウェア」に移行しようと考えました。
+
+# LibreChat
+
+[LibreChat](https://github.com/danny-avila/LibreChat) は、リポジトリのAboutに "Enhanced ChatGPT Clone" と書かれている通り、ChatGPT に似たUIを持つOSSです。
+
+Light Mode
+
+![LibreChatの画面(Light Mode)](/assets/2024/2024-02-14-librechat/librechat-light.webp)
+
+Dark Mode
+
+![LibreChatの画面(Dark Mode)](/assets/2024/2024-02-14-librechat/librechat-dark.webp)
+
+LibreChat には ChatGPT (Plus) にはない特徴がいくつかあります。
+
+## LibreChat の特徴 (2024/02/14 現在)
+
+LibreChat では ChatGPT API の他にも、 Google Vertex AI (Gemini) や Azure OpenAI Service など複数のエンドポイントを利用できます。
+
+![Endpointの選択](/assets/2024/2024-02-14-librechat/librechat-endpoints.webp)
+
+OpenAI ChatGPT を利用する場合でも、 `gpt-4-0125-preview` , `gpt-4-1106-preview` のように特定のモデルを選択できます。
+
+![モデルの選択](/assets/2024/2024-02-14-librechat/librechat-openai-models.webp)
+
+利用時のパラメータも自由に設定できます。
+
+![パラメータの設定](/assets/2024/2024-02-14-librechat/librechat-param-config.webp)
+
+LibreChat にはユーザーアカウントの管理機能が組み込まれており、新規登録やログインができます。
+
+![ログイン画面](/assets/2024/2024-02-14-librechat/librechat-login.webp)
+
+そして、各エンドポイントのAPIキーは、LibreChat の各ユーザーアカウントが個別に登録し使用します。
+
+![APIキーの設定](/assets/2024/2024-02-14-librechat/librechat-api-key-input.webp)
+
+（APIキーは、設定ファイルに埋め込んで全ユーザーに一括解放することもできます。）
