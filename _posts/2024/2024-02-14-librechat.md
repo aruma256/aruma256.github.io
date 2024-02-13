@@ -67,3 +67,18 @@ LibreChat にはユーザーアカウントの管理機能が組み込まれて�
 ![APIキーの設定](/assets/2024/2024-02-14-librechat/librechat-api-key-input.webp)
 
 （APIキーは、設定ファイルに埋め込んで全ユーザーに一括解放することもできます。）
+
+# LibreChat をローカルで動かす
+
+公式ドキュメントで推奨されている、[Docker Compose を使う方法](https://docs.librechat.ai/install/installation/docker_compose_install.html)が手軽で良いでしょう。
+
+```bash
+git clone https://github.com/danny-avila/LibreChat.git
+cp .env.example .env
+docker compose up -d
+```
+
+をしてから `http://localhost:3080` にアクセスすると、LibreChat が動作しているはずです。  
+あとはアカウント作成（適当なメアドとパスワードでよい）をして、APIキーを設定すれば利用できます。
+
+（デプロイ編へ続く）
