@@ -4,13 +4,13 @@ categories:
     - blog
 tags:
     - LLM
-header:
-    image: /assets/2024/2024-02-14-librechat/librechat-multi-model.webp
 toc: true
 ---
 
 ChatGPT Plus からの移行先として LibreChat を触ってみました。  
 使い勝手がよく、しばらくメインで使っていくことにしたので、機能とローカルでの動かし方をまとめます。（デプロイ編は別記事にします。）
+
+![LibreChatの画面](/assets/2024/2024-02-14-librechat/librechat-multi-model.webp)
 
 # 背景
 
