@@ -4,6 +4,8 @@ categories:
     - blog
 tags:
     - LLM
+header:
+    image: /assets/2024/2024-02-14-librechat/librechat-multi-model.webp
 toc: true
 ---
 
@@ -67,6 +69,10 @@ LibreChat にはユーザーアカウントの管理機能が組み込まれて�
 ![APIキーの設定](/assets/2024/2024-02-14-librechat/librechat-api-key-input.webp)
 
 （APIキーは、設定ファイルに埋め込んで全ユーザーに一括解放することもできます。）
+
+また、ベータ機能ですが、チャット中のモデル切り替えができるようになっていました。
+
+![チャット途中でのモデル切り替え](/assets/2024/2024-02-14-librechat/librechat-multi-model.webp)
 
 # LibreChat をローカルで動かす (v0.6.6)
 
