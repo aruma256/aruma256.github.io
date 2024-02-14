@@ -45,6 +45,11 @@ Dark Mode
 
 ![LibreChatの画面(Dark Mode)](/assets/2024/2024-02-14-librechat/librechat-dark.webp)
 
+実際に、"社内用ChatGPT" として採用された事例もあるようです。
+
+> [LibreChatの採用とGPT-4の開放（社内用ChatGPTクローンのアップデート）](https://techblog.asahi-net.co.jp/entry/2024/01/11/105358)
+> 朝日ネット　技術者ブログ
+
 LibreChat には ChatGPT (Plus) にはない特徴がいくつかあります。
 
 ## LibreChat の特徴 (2024/02/14 現在)
