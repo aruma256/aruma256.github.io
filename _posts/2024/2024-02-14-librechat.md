@@ -1,5 +1,5 @@
 ---
-title: "LibreChat"
+title: "ChatGPT Plus から LibreChat + ChatGPT API に乗り換えた話（お試し編）"
 categories:
     - blog
 tags:
@@ -9,7 +9,8 @@ header:
 toc: true
 ---
 
-ChatGPT Plus からの移行先として、LibreChat を触ってみました。
+ChatGPT Plus からの移行先として LibreChat を触ってみました。  
+使い勝手がよく、しばらくメインで使っていくことにしたので、機能とローカルでの動かし方をまとめます。（デプロイ編は別記事にします。）
 
 # 背景
 
