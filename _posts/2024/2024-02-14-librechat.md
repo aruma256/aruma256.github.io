@@ -47,8 +47,8 @@ Dark Mode
 
 実際に、"社内用ChatGPT" として採用された事例もあるようです。
 
-> [LibreChatの採用とGPT-4の開放（社内用ChatGPTクローンのアップデート）](https://techblog.asahi-net.co.jp/entry/2024/01/11/105358)  
-> 朝日ネット　技術者ブログ
+* [LibreChatの採用とGPT-4の開放（社内用ChatGPTクローンのアップデート）](https://techblog.asahi-net.co.jp/entry/2024/01/11/105358)  （朝日ネット　技術者ブログ）
+* [社内版ChatGPTを導入したお話（LibreChat）](https://blog.gmo.media/internal-chatgpt) （GMOメディア｜クリエイターブログ）
 
 LibreChat には ChatGPT (Plus) にはない特徴がいくつかあります。
 
