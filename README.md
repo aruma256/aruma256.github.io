@@ -1,1 +1,1 @@
-arumaのブログ [https://aruma256.github.io/](https://aruma256.github.io/) を管理するリポジトリです。
+arumaのブログ [https://aruma256.dev/](https://aruma256.dev/) を管理するリポジトリです。
