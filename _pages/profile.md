@@ -10,9 +10,10 @@ aruma256 というハンドルネームで活動しています。
 
 ### 一般アカウント
 
-* GitHub: [aruma256](https://github.com/aruma256)
 * ブログ: [aruma256のブログ](https://aruma256.dev/)
     * GitHub Pages で運用しています: [aruma256.github.io](https://github.com/aruma256/aruma256.github.io)
+* GitHub: [aruma256](https://github.com/aruma256)
+* AtCoder: [Aruma256](https://atcoder.jp/users/Aruma256)
 * X: [@aruma256](https://x.com/aruma256)
 * Misskey: [@aruma256@misskey.io](https://misskey.io/@aruma256)
 * inactive なもの
