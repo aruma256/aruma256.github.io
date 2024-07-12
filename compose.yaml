@@ -1,6 +1,6 @@
 services:
   blog:
-    image: ruby:3.3.2
+    image: ruby:3.3.4
     ports:
       - 80:80
     environment:
