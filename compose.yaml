@@ -1,8 +1,10 @@
 services:
   blog:
-    build: .
+    image: ruby:3.3.4
     ports:
       - 80:80
+    environment:
+      - BUNDLE_PATH=vendor/bundle
     volumes:
       - .:/src
     working_dir: /src
