@@ -107,7 +107,7 @@ Fisher–Yates shuffle のシャッフルを詳しく見ていきましょう。
 
 を繰り返すと考えてみましょう。
 
-<img src="/assets/2025/2025-03-12-fisher-yates-shuffle/bag-shuffle.gif" alt="シャッフルのイメージ" style="max-width: 100%; width: 600px; height: auto; display: block; margin: 0 auto;" />
+<img src="/assets/2025/2025-03-13-fisher-yates-shuffle/bag-shuffle.gif" alt="シャッフルのイメージ" style="max-width: 100%; width: 600px; height: auto; display: block; margin: 0 auto;" />
 
 これと同じことをコードで実現すればよいのです。
 
@@ -135,11 +135,11 @@ function shuffle(array) {
 
 もう一度、シャッフルのイメージを思い出してみましょう。
 
-<img src="/assets/2025/2025-03-12-fisher-yates-shuffle/bag-shuffle.gif" alt="シャッフルのイメージ" style="max-width: 100%; width: 600px; height: auto; display: block; margin: 0 auto;" />
+<img src="/assets/2025/2025-03-13-fisher-yates-shuffle/bag-shuffle.gif" alt="シャッフルのイメージ" style="max-width: 100%; width: 600px; height: auto; display: block; margin: 0 auto;" />
 
 ここで重要なのは、**袋の中身の順序は無関係**ということです。  
 配列のうち**シャッフル済みではない部分を袋として利用**しましょう。
 
-<img src="/assets/2025/2025-03-12-fisher-yates-shuffle/in-place-shuffle.gif" alt="シャッフルのイメージ" style="max-width: 100%; width: 600px; height: auto; display: block; margin: 0 auto;" />
+<img src="/assets/2025/2025-03-13-fisher-yates-shuffle/in-place-shuffle.gif" alt="シャッフルのイメージ" style="max-width: 100%; width: 600px; height: auto; display: block; margin: 0 auto;" />
 
 これを、実装しやすいように後ろから確定させていくように変更したものが、最初の Fisher–Yates shuffle の実装でした。
