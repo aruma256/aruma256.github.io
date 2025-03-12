@@ -87,3 +87,59 @@ function shuffle(array) {
 | Fisher-Yates shuffle | ✅ ほぼ無し | ✅ `N` に比例する時間で済む |
 
 Fisher–Yates shuffle は、メモリ使用量の面でも計算時間の面でも優れていることがわかります。
+
+# 正しくシャッフルできているのか
+
+効率が良くても、正しく公平に（均等な確率で）シャッフルされていないと意味がありません。
+Fisher–Yates shuffle のシャッフルを詳しく見ていきましょう。
+
+## 基本的なシャッフル
+
+例えば「最初に前の方にあった要素が前に来やすい」というような偏りがあると、公平に（均等な確率で）シャッフルされていないことになります。  
+偏りをなくすにはどうすればよいでしょうか。
+
+「元の配列をどう並べ替えるか？」と考えると難しくなってしまいますが、シャッフルで実現したいことは最終的にランダムな順序にすることであり、最初の順序は気にする必要がありません。
+
+そこで、
+
+1. 一旦、元の配列の要素を1つの大きな袋に入れてしまう
+2. 袋からランダムの1つ取り出し、最後尾に追加する
+
+を繰り返すと考えてみましょう。
+
+<img src="/assets/2025/2025-03-12-fisher-yates-shuffle/bag-shuffle.gif" alt="シャッフルのイメージ" style="max-width: 100%; width: 600px; height: auto; display: block; margin: 0 auto;" />
+
+これと同じことをコードで実現すればよいのです。
+
+```javascript
+function shuffle(array) {
+    // まずは袋に入れる
+    const bag = array.slice();
+    const shuffled = [];
+
+    while (bag.length > 0) {
+        // 袋からランダムの1つ取り出し
+        const randomIndex = Math.floor(Math.random() * bag.length);
+        const selectedElement = bag.splice(randomIndex, 1)[0];
+        // 取り出した要素を最後尾に追加する
+        shuffled.push(selectedElement);
+    }
+    return shuffled;
+}
+```
+
+## in-place での実装
+
+上記の実装では、シャッフルされた配列を新しく作成しています。  
+配列を新規作成しないような実装に変更するにはどうすればよいでしょうか。
+
+もう一度、シャッフルのイメージを思い出してみましょう。
+
+<img src="/assets/2025/2025-03-12-fisher-yates-shuffle/bag-shuffle.gif" alt="シャッフルのイメージ" style="max-width: 100%; width: 600px; height: auto; display: block; margin: 0 auto;" />
+
+ここで重要なのは、**袋の中身の順序は無関係**ということです。  
+配列のうち**シャッフル済みではない部分を袋として利用**しましょう。
+
+<img src="/assets/2025/2025-03-12-fisher-yates-shuffle/in-place-shuffle.gif" alt="シャッフルのイメージ" style="max-width: 100%; width: 600px; height: auto; display: block; margin: 0 auto;" />
+
+これを、実装しやすいように後ろから確定させていくように変更したものが、最初の Fisher–Yates shuffle の実装でした。
