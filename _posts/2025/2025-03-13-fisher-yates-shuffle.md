@@ -79,26 +79,26 @@ function shuffle(array) {
 同じ結果を得られるなら、メモリ使用量が少ない方が嬉しいでしょう。
 
 乱数を紐づけてソートする方法では、紐づけた乱数の分のメモリが追加で必要になります。  
-一方、Fisher–Yates アルゴリズムの場合、もとの配列の中で入れ替え処理を行うため、追加のメモリはほとんど必要ありません。
+一方、**Fisher–Yates アルゴリズムの場合、もとの配列の中で入れ替え処理を行うため、追加のメモリはほとんど必要ありません。**
 
 また、同じ結果を得られるなら、計算時間は短い方が嬉しいです。
 
-ここでは、対象の配列の長さ `N` が大きくなると計算時間がどのような伸び方をするかを比較してみます。  
-（例えば `N` が10倍、100倍、1000倍…になったとき、計算時間も10倍、100倍、1000倍…で済む実装と、100倍、10000倍、1000000倍…のように膨れ上がっていく実装の2択なら、前者を選びたいですよね。）  
-乱数を紐づけてソートする方法では、基本的に伸び方は `N*log(N)` と表現されます。`N` が10倍、100倍のとき、計算時間は10倍、100倍 よりも大きくなってしまうということです。  
-一方、Fisher–Yates の伸び方は `N` と表現されます。つまり、10倍、100倍 で済むのです。  
+少数のシャッフルなら方法によらず瞬時に計算が終わるので、ここではシャッフル対象の配列はある程度大きいものとして、対象の配列の長さ `N` が大きくなると計算時間がどのような伸び方をするかを比較してみます。  
+（例えば `N` が2倍、3倍、4倍…になったとき、計算時間も2倍、3倍、4倍…で済む実装と、4倍、9倍、16倍…のように膨れ上がっていく実装の2択なら、前者を選びたいですよね。）  
+乱数を紐づけてソートする方法では、基本的に伸び方は `N*log(N)` と表現されます。`N` が2倍、3倍、4倍…になったとき、計算時間は2倍、3倍、4倍…よりも大きくなってしまうということです。  
+**一方、Fisher–Yates の伸び方は `N` と表現されます。つまり、2倍、3倍、4倍…で済むのです。**  
 （詳細は時間計算量について調べてみてください）
 
 |  | メモリ使用量の増加 | 計算時間の伸び方 |
 |---|---|---|
-| 乱数を紐づけてソート | ❌ `N` 個の乱数値のための追加メモリが必要 | ❌ `N*log(N)` で伸びていく |
-| Fisher-Yates shuffle | ✅ ほぼ無し | ✅ `N` で済む |
+| 乱数を紐づけてソート | ❌ 乱数値 `N` 個分の追加メモリが必要 | ❌ `N*log(N)` で伸びていく |
+| Fisher-Yates shuffle | ✅ わずか | ✅ `N` で済む |
 
 Fisher–Yates shuffle は、メモリ使用量の面でも計算時間の面でも優れていることがわかります。
 
 # 正しくシャッフルできているのか
 
-いくら効率が良くても、例えば「最初に前の方にあった要素が前に来やすい」というような偏りがあると困ります。  
+いくら効率が良くても、例えば **「最初に前の方にあった要素が前に来やすい」というような偏りがあると困ります。**  
 偏りをなくすにはどうすればよいでしょうか。
 
 ## シャッフルの基本
@@ -112,7 +112,9 @@ Fisher–Yates shuffle は、メモリ使用量の面でも計算時間の面で
 
 と考えてみましょう。
 
-<img src="/assets/2025/2025-03-13-fisher-yates-shuffle/bag-shuffle.gif" alt="袋によるシャッフルのイメージ" style="max-width: 100%; width: 600px; height: auto; display: block; margin: 0 auto;" />
+<video muted playsinline controls style="max-width: 100%; width: 600px; height: auto; display: block; margin: 0 auto;">
+  <source src="/assets/2025/2025-03-13-fisher-yates-shuffle/bag-shuffle.mp4" type="video/mp4">
+</video>
 
 初期状態の並び順に無関係で、シャッフル後の順序も偏りがないシャッフル方法ができました。  
 これと同じことをコードで実現すればよいのです。
@@ -141,11 +143,16 @@ function shuffle(array) {
 
 もう一度、先程のシャッフルのイメージを思い出してみましょう。
 
-<img src="/assets/2025/2025-03-13-fisher-yates-shuffle/bag-shuffle.gif" alt="袋によるシャッフルのイメージ" style="max-width: 100%; width: 600px; height: auto; display: block; margin: 0 auto;" />
+<video muted playsinline controls style="max-width: 100%; width: 600px; height: auto; display: block; margin: 0 auto;">
+  <source src="/assets/2025/2025-03-13-fisher-yates-shuffle/bag-shuffle.mp4" type="video/mp4">
+</video>
 
-ここで重要なのは、**袋の中身の順序は無関係**ということです。  
-配列のうち**シャッフル済みではない部分を袋として利用**しましょう。
+ここで、袋の中身の順序は無関係という性質を利用し、**配列のうち未シャッフル部分を袋として利用**しましょう。  
+つまり、**「袋から取り出し、最後尾に追加する」を「袋を1つ分縮小させる。この時、はみ出た要素が最後尾に追加されたことにする」**と考えます。  
+このとき、「ランダムに1つ取り出す」は「ランダムに1つ選び、はみ出ることになる位置に移動させてから、袋を縮小させる」となります。
 
-<img src="/assets/2025/2025-03-13-fisher-yates-shuffle/in-place-shuffle.gif" alt="Fisher–Yates shuffle のイメージ" style="max-width: 100%; width: 600px; height: auto; display: block; margin: 0 auto;" />
+<video muted playsinline controls style="max-width: 100%; width: 600px; height: auto; display: block; margin: 0 auto;">
+  <source src="/assets/2025/2025-03-13-fisher-yates-shuffle/in-place-shuffle.mp4" type="video/mp4">
+</video>
 
-これを、実装しやすいように後ろから確定させていくように変更すると、最初の Fisher–Yates shuffle の実装になります。
+これを、実装しやすいように前後反転すると、最初の Fisher–Yates shuffle の実装になります。
