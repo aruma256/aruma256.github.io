@@ -85,7 +85,7 @@ print(*decoded, sep='')
 ### 感想や気づき
 
 競プロのおかげで素数にビビらずに済みました。推理・暗号解読ゲームのような感覚で楽しく解けました。  
-逆操作で容易に複合できる暗号では手順が流出すると一気に解読されてしまうことを改めて認識しました。
+逆操作で容易に復号できる暗号では手順が流出すると一気に解読されてしまうことを改めて認識しました。
 
 ## Day3: Emojify
 
@@ -94,7 +94,7 @@ print(*decoded, sep='')
 tar.gz ファイルとIPv4のURLがありました。tar.gz の中には、Dockerfile、compose.yaml、frontend/backend/secret ディレクトリが入っていました。3つのサービスをdocker composeで立ち上げる構成のようです。  
 立ち上げて `/` にアクセスすると、以下のような画面が表示されました。
 
-![emojifyの画面](/assets/2025/2025-12-08-daily-alpacahack/emojify.png)
+![emojifyの画面](/assets/2025/2025-12-09-daily-alpacahack/emojify.png)
 
 各要素について詳しく見ていきます。
 
@@ -121,7 +121,7 @@ frontend は `waf` メソッドを通した後に `new URL(path, "http://backend
 * `path` に `emoji` が含まれていないなら、 `Invalid 2` 例外
 
 というチェックを行っていました。  
-整理すると、「`new URL(path, "http://backend:3000")` を `http://secret:1337/flag` とするために `path` に絶対パスを渡したいが、`path` は `/` で始まる必要がある」という状況です。
+整理すると、「`new URL(path, "http://backend:3000")` を `http://secret:1337/flag` とするために `path` に絶対URLを渡したいが、`path` は `/` で始まる必要がある」という状況です。
 
 URLの仕様でこれを実現できそうなものを探すため [https://developer.mozilla.org/ja/docs/Learn_web_development/Howto/Web_mechanics/What_is_a_URL](https://developer.mozilla.org/ja/docs/Learn_web_development/Howto/Web_mechanics/What_is_a_URL) を見てみると、絶対パスではありませんがスキーム相対URL （例: `//example.com/path`）というものがあることがわかりました。これは、絶対URLからプロトコルのみを取り除いた形式です。
 
