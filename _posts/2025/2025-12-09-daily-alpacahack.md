@@ -1,5 +1,5 @@
 ---
-title: "Daily AlpacaHack でCTFデビューした　- day1～3 writeups"
+title: "Daily AlpacaHack でCTFデビューした - day1～3 writeups"
 categories:
     - blog
 tags:
