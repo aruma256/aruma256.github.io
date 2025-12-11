@@ -12,6 +12,8 @@ toc: true
 担当しているRailsプロジェクトに[rbs-inline](https://github.com/soutaro/rbs-inline)と[steep](https://github.com/soutaro/steep)による型付け・型検査を導入しました。  
 検出された型エラーの調査・修正を行う中で、[ruby/gem_rbs_collection](https://github.com/ruby/gem_rbs_collection) 側の追加・修正が必要な箇所をいくつか見つけたので、初めて gem_rbs_collection にコントリビュートしてみました。
 
+この記事は、[GMOぺパボ エンジニア Advent Calendar 2025 🎄会場](https://adventar.org/calendars/12190) の11日目です。
+
 ## gem_rbs_collection とは
 
 [gem_rbs_collection](https://github.com/ruby/gem_rbs_collection) は、RBSを同梱していないgemのための型定義を集めた、コミュニティ管理のリポジトリです。
