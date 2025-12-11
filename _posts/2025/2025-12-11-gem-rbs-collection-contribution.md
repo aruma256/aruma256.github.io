@@ -12,7 +12,7 @@ toc: true
 担当しているRailsプロジェクトに[rbs-inline](https://github.com/soutaro/rbs-inline)と[steep](https://github.com/soutaro/steep)による型付け・型検査を導入しました。  
 検出された型エラーの調査・修正を行う中で、[ruby/gem_rbs_collection](https://github.com/ruby/gem_rbs_collection) 側の追加・修正が必要な箇所をいくつか見つけたので、初めて gem_rbs_collection にコントリビュートしてみました。
 
-この記事は、[GMOぺパボ エンジニア Advent Calendar 2025 🎄会場](https://adventar.org/calendars/12190) の11日目です。
+この記事は、[GMOペパボ エンジニア Advent Calendar 2025 🎄会場](https://adventar.org/calendars/12190) の11日目です。
 
 ## gem_rbs_collection とは
 
@@ -117,10 +117,10 @@ test.rb:76:4: [error] Type `singleton(::Mutations::Ping)` does not have method `
 ## 注意すべき点
 
 gem_rbs_collection では、gem ごとに対象とするバージョンが定められています。  
-PRを作り始める前に、そのメソッドや引数が追加・変更されたどのバージョンと型定義の対象バージョンをチェックしておくとよいでしょう。
+PRを作り始める前に、そのメソッドや引数が追加・変更されたバージョンと、型定義の対象バージョンをチェックしておくとよいでしょう。
 
 ## おわりに
 
 gem側の型エラーはその場でパッチを用意して暫定対応することもできますが、以前 RubyKaigi 2022 の発表 [Types teaches success, what will we do?](https://rubykaigi.org/2022/presentations/fugakkbn.html) で流れを聞いていたので、この機会にコントリビュートしてみることにしました。
 
-実際にやってみると、ハードルは思ったより低かったです。型定義の不足や誤りを見つけたら、暫定対応だけでなくコントリビュートも選択肢に入れてみください。
+実際にやってみると、ハードルは思ったより低かったです。型定義の不足や誤りを見つけたら、暫定対応だけでなくコントリビュートも選択肢に入れてみてください。
