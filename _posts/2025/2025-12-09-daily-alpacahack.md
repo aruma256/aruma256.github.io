@@ -12,7 +12,7 @@ CTF（ほぼ）初挑戦の私が取り組んだ記録、解説と、その過�
 
 2025/12/01～2025/12/03 の3問の内容が含まれます。
 
-この記事は、[GMOぺパボ エンジニア Advent Calendar 2025 🎄会場](https://adventar.org/calendars/12190) の9日目です。
+この記事は、[GMOペパボ エンジニア Advent Calendar 2025 🎄会場](https://adventar.org/calendars/12190) の9日目です。
 
 ## Day1: AlpacaHack 2100
 
