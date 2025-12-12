@@ -56,8 +56,8 @@ test.rb:61:77: [error] Unexpected keyword argument
 
 などを確認しつつ、以下のような型定義を追加しました。
 
-```rbs
-def initialize: (String message, ?ast_node: untyped, ?extensions: Hash[untyped, untyped]?) -> void
+```diff
++ def initialize: (String message, ?ast_node: untyped, ?extensions: Hash[untyped, untyped]?) -> void
 ```
 
 通常の開発であれば単体テストなどで動作を保証できますが、型定義ファイル自体はそもそも実行するものではないため実行時の挙動に基づいたテストはできません。  
