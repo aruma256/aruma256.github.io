@@ -253,3 +253,7 @@ URL parser の仕様を調べていくと、[The basic URL parser](https://url.s
 これを利用し、`java(tab)script:（クッキーを取得し用意した外部サーバーに送るスクリプト）` を実行させることで、FLAGを入手できました。
 
 バリデーションの考慮漏れ（というかJSの知らない挙動）、怖い。
+
+## さいごに
+
+Daily AlpacaHack、楽しいし勉強になるし最高ですね。
