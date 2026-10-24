@@ -5,7 +5,7 @@ tags:
 toc: true
 ---
 
-以前 [n8n の self-hosting のすすめ](/blog/2024/09/16/n8n.html) という記事を書きましたが、最近は n8n をやめて Hono + BullMQ の構成に移行しました。  
+以前 [n8n の self-hosting のすすめ](/posts/n8n) という記事を書きましたが、最近は n8n をやめて Hono + BullMQ の構成に移行しました。  
 その経緯と所感をまとめます。
 
 ## 移行先の構成
@@ -13,7 +13,7 @@ toc: true
 [Hono](https://hono.dev/) と [BullMQ](https://bullmq.io/) を組み合わせ、TypeScript で実装しています。
 BullMQ の Job Scheduler で cron スケジュール実行、Hono で Webhook の受け付けを行っています。
 
-[前回の記事](/blog/2024/09/16/n8n.html)と同様に Synology NAS 上で動かしており、app コンテナと Redis コンテナを Docker Compose で立ち上げています。
+[前回の記事](/posts/n8n)と同様に Synology NAS 上で動かしており、app コンテナと Redis コンテナを Docker Compose で立ち上げています。
 
 現在動いているワークフローは、
 

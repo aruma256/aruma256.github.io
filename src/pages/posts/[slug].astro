@@ -1,20 +1,17 @@
 ---
 import { render } from 'astro:content';
-import Icon from '../../../../../components/Icon.astro';
-import Toc from '../../../../../components/Toc.astro';
-import Base from '../../../../../layouts/Base.astro';
-import { getPosts, pubDate, tagSlug, type Post } from '../../../../../lib/posts';
+import Icon from '../../components/Icon.astro';
+import Toc from '../../components/Toc.astro';
+import Base from '../../layouts/Base.astro';
+import { getPosts, pubDate, tagSlug, type Post } from '../../lib/posts';
 
 export async function getStaticPaths() {
   // link post は寄稿先へ直接リンクするので、ブログ内にはページを作らない
   const posts = (await getPosts()).filter((post) => !post.isLink);
-  return posts.map((post, i) => {
-    const [year, month, day] = post.date.split('-');
-    return {
-      params: { year, month, day, slug: post.slug },
-      props: { post, newer: posts[i - 1], older: posts[i + 1] },
-    };
-  });
+  return posts.map((post, i) => ({
+    params: { slug: post.slug },
+    props: { post, newer: posts[i - 1], older: posts[i + 1] },
+  }));
 }
 
 interface Props {
@@ -55,7 +52,7 @@ const { toc, image } = post.entry.data;
           <ul class="tag-list">
             {post.tags.map((tag) => (
               <li>
-                <a href={`/tags/#${tagSlug(tag)}`}>{tag}</a>
+                <a href={`/tags#${tagSlug(tag)}`}>{tag}</a>
               </li>
             ))}
           </ul>

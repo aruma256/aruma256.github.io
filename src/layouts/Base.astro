@@ -17,7 +17,8 @@ interface Props {
 const { title, description = SITE_DESCRIPTION, image = AUTHOR.avatar, type = 'website', publishedTime } = Astro.props;
 
 const fullTitle = title ? `${title} - ${SITE_TITLE}` : SITE_TITLE;
-const canonical = new URL(Astro.url.pathname, Astro.site);
+// build.format: 'file' だとビルド時の pathname が /posts.html や /index.html になるので、配信される URL に揃える
+const canonical = new URL(Astro.url.pathname.replace(/(index)?\.html$/, ''), Astro.site);
 const imageUrl = new URL(image, Astro.site);
 const hasAside = Astro.slots.has('aside');
 ---
@@ -68,7 +69,7 @@ const hasAside = Astro.slots.has('aside');
               </a>
             ))
           }
-          <a class="site-nav__search" href="/search/" aria-label="検索">
+          <a class="site-nav__search" href="/search" aria-label="検索">
             <Icon name="search" />
           </a>
         </nav>

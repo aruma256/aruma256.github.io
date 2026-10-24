@@ -46,7 +46,7 @@ function toPost(entry: CollectionEntry<'posts'>): Post {
     slug,
     tags: entry.data.tags,
     isLink,
-    url: entry.data.link ?? `/blog/${year}/${month}/${day}/${slug}.html`,
+    url: entry.data.link ?? `/posts/${slug}`,
     excerpt: extractExcerpt(entry.rendered?.html ?? ''),
   };
 }
@@ -54,9 +54,20 @@ function toPost(entry: CollectionEntry<'posts'>): Post {
 /** 全記事を新しい順に返す */
 export async function getPosts(): Promise<Post[]> {
   const entries = await getCollection('posts');
-  return entries
-    .map(toPost)
-    .sort((a, b) => b.date.localeCompare(a.date) || b.slug.localeCompare(a.slug));
+  const posts = entries.map(toPost);
+  // URL に日付を含まないので、slug が重複すると記事ページが衝突する
+  const seen = new Set<string>();
+  for (const post of posts) {
+    if (seen.has(post.slug)) throw new Error(`記事の slug が重複しています: ${post.slug}`);
+    seen.add(post.slug);
+  }
+  return posts.sort((a, b) => b.date.localeCompare(a.date) || b.slug.localeCompare(a.slug));
+}
+
+/** Jekyll 時代の記事 URL (/blog/YYYY/MM/DD/slug.html) */
+export function legacyUrl(post: Post): string {
+  const [year, month, day] = post.date.split('-');
+  return `/blog/${year}/${month}/${day}/${post.slug}.html`;
 }
 
 export function tagSlug(tag: string): string {

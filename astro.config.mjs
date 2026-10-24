@@ -5,9 +5,11 @@ import remarkCjkFriendly from 'remark-cjk-friendly';
 
 export default defineConfig({
   site: 'https://aruma256.dev',
+  // URL は拡張子・末尾スラッシュなし (/posts/slug, /profile)。
+  // Cloudflare の html_handling (auto-trailing-slash) が posts/slug.html を /posts/slug で配信する
+  trailingSlash: 'never',
   build: {
-    // Jekyll 時代の URL (/blog/YYYY/MM/DD/slug.html と /profile/ など) をそのまま維持する
-    format: 'preserve',
+    format: 'file',
   },
   markdown: {
     // デフォルトの Sätteri には CJK 向けの強調補正がないため、remark/rehype を使う

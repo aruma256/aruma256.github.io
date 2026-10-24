@@ -21,5 +21,7 @@ export async function GET(context: APIContext) {
       categories: post.tags,
     })),
     customData: '<language>ja</language>',
+    // 記事 URL は末尾スラッシュなし
+    trailingSlash: false,
   });
 }

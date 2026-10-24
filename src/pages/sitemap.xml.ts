@@ -4,7 +4,7 @@ import { getPosts } from '../lib/posts';
 // Search Console に登録済みの /sitemap.xml をそのまま維持するため、自前で生成する
 export async function GET(context: APIContext) {
   const posts = (await getPosts()).filter((post) => !post.isLink);
-  const pages = ['/', '/profile/', '/posts/', '/tags/', ...posts.map((post) => post.url)];
+  const pages = ['/', '/profile', '/posts', '/tags', ...posts.map((post) => post.url)];
   const lastmod = new Map(posts.map((post) => [post.url, post.date]));
   const urls = pages
     .map((path) => {

@@ -17,6 +17,13 @@ import Base from '../../layouts/Base.astro';
         showSubResults: true,
         showImages: false,
         translations: { placeholder: '記事を検索' },
+        // インデックスの URL はファイル名 (/posts/slug.html) なので、配信 URL (/posts/slug) に揃える
+        processResult: (result) => {
+          const clean = (url) => url.replace(/\.html(?=$|#)/, '');
+          result.url = clean(result.url);
+          for (const sub of result.sub_results ?? []) sub.url = clean(sub.url);
+          return result;
+        },
       });
       if (query) ui.triggerSearch(query);
     } else {

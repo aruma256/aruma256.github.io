@@ -12,9 +12,9 @@ export const AUTHOR = {
 } as const;
 
 export const NAV = [
-  { title: 'Profile', url: '/profile/' },
-  { title: 'Tags', url: '/tags/' },
-  { title: 'Posts', url: '/posts/' },
+  { title: 'Profile', url: '/profile' },
+  { title: 'Tags', url: '/tags' },
+  { title: 'Posts', url: '/posts' },
 ] as const;
 
 export const GA_MEASUREMENT_ID = 'G-Q0KBBGX3BJ';
