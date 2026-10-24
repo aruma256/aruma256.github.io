@@ -1,7 +1,0 @@
-main:
-  - title: "Profile"
-    url: /profile/
-  - title: "Tags"
-    url: /tags/
-  - title: "Posts"
-    url: /posts/
