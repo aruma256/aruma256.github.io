@@ -4,10 +4,14 @@ import Icon from './Icon.astro';
 ---
 
 <div class="author">
-  <img class="author__avatar" src={AUTHOR.avatar} alt={AUTHOR.name} width="110" height="110" />
+  {/* 名前のリンクと行き先が同じなので、アバターはタブ移動・読み上げの対象から外す */}
+  <a class="author__avatar-link" href="/profile" tabindex="-1" aria-hidden="true">
+    <img class="author__avatar" src={AUTHOR.avatar} alt="" width="110" height="110" />
+  </a>
   <div class="author__content">
-    <p class="author__name">{AUTHOR.name}</p>
+    <p class="author__name"><a href="/profile">{AUTHOR.name}</a></p>
     <p class="author__bio">{AUTHOR.bio}</p>
+    <p class="author__more"><a href="/profile">プロフィールを見る →</a></p>
   </div>
   <ul class="author__links">
     {

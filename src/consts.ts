@@ -4,7 +4,7 @@ export const SITE_DESCRIPTION = 'arumaのブログです';
 export const AUTHOR = {
   name: 'aruma256',
   avatar: '/assets/images/aruma_white_square.png',
-  bio: 'arumaです',
+  bio: 'Webエンジニア。VR、競プロ、謎解きなど。',
   links: [
     { label: 'X', icon: 'x', url: 'https://x.com/aruma256' },
     { label: 'GitHub', icon: 'github', url: 'https://github.com/aruma256' },

@@ -173,7 +173,13 @@ video {
   font-size: 0.9375rem;
 }
 
+.author__avatar-link {
+  display: block;
+  width: fit-content;
+}
+
 .author__avatar {
+  display: block;
   width: 56px;
   height: 56px;
   border: 1px solid var(--color-border-light);
@@ -187,9 +193,23 @@ video {
   font-size: 1.125rem;
 }
 
+.author__name a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.author__name a:hover {
+  color: var(--color-link-hover);
+}
+
 .author__bio {
   margin: 0;
   color: var(--color-muted);
+}
+
+.author__more {
+  margin: 0.25rem 0 0;
+  font-size: 0.875rem;
 }
 
 .author__links {
@@ -232,6 +252,10 @@ video {
 
   .author__bio {
     margin-top: 0.75rem;
+  }
+
+  .author__more {
+    margin-top: 0.5rem;
   }
 
   .author__links {
