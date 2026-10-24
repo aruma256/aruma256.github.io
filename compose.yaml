@@ -1,6 +1,6 @@
 services:
   blog:
-    image: node:24
+    image: node:26
     ports:
       - 4321:4321
     volumes:
