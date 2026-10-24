@@ -1,0 +1,86 @@
+---
+import { render } from 'astro:content';
+import Icon from '../../../../../components/Icon.astro';
+import Toc from '../../../../../components/Toc.astro';
+import Base from '../../../../../layouts/Base.astro';
+import { getPosts, pubDate, tagSlug, type Post } from '../../../../../lib/posts';
+
+export async function getStaticPaths() {
+  // link post は寄稿先へ直接リンクするので、ブログ内にはページを作らない
+  const posts = (await getPosts()).filter((post) => !post.isLink);
+  return posts.map((post, i) => {
+    const [year, month, day] = post.date.split('-');
+    return {
+      params: { year, month, day, slug: post.slug },
+      props: { post, newer: posts[i - 1], older: posts[i + 1] },
+    };
+  });
+}
+
+interface Props {
+  post: Post;
+  newer?: Post;
+  older?: Post;
+}
+
+const { post, newer, older } = Astro.props;
+const { Content, headings } = await render(post.entry);
+const { toc, image } = post.entry.data;
+---
+
+<Base
+  title={post.title}
+  description={post.excerpt.slice(0, 160)}
+  image={image}
+  type="article"
+  publishedTime={pubDate(post).toISOString()}
+>
+  {toc && <Toc slot="aside" headings={headings} />}
+  <article class="post" data-pagefind-body>
+    <header class="post__header">
+      {image && <img class="post__image" src={image} alt="" />}
+      <h1 class="post__title">{post.title}</h1>
+      <p class="post-meta">
+        <Icon name="calendar" />
+        <time datetime={post.date} data-pagefind-meta="date">{post.date}</time>
+      </p>
+    </header>
+    <div class="prose">
+      <Content />
+    </div>
+    {
+      post.tags.length > 0 && (
+        <footer class="post__footer">
+          <Icon name="tag" />
+          <ul class="tag-list">
+            {post.tags.map((tag) => (
+              <li>
+                <a href={`/tags/#${tagSlug(tag)}`}>{tag}</a>
+              </li>
+            ))}
+          </ul>
+        </footer>
+      )
+    }
+  </article>
+  <nav class="pager" aria-label="前後の記事">
+    {
+      older ? (
+        <a class="pager__link pager__link--older" href={older.url}>
+          <span>前の記事</span>
+          {older.title}
+        </a>
+      ) : (
+        <span />
+      )
+    }
+    {
+      newer && (
+        <a class="pager__link pager__link--newer" href={newer.url}>
+          <span>次の記事</span>
+          {newer.title}
+        </a>
+      )
+    }
+  </nav>
+</Base>

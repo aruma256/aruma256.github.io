@@ -1,0 +1,35 @@
+---
+import PostLink from '../../components/PostLink.astro';
+import Base from '../../layouts/Base.astro';
+import { getPosts } from '../../lib/posts';
+
+const posts = await getPosts();
+const years = Map.groupBy(posts, (post) => post.date.slice(0, 4));
+---
+
+<Base title="Posts by Year">
+  <h1 class="page-title">Posts by Year</h1>
+  <ul class="term-index">
+    {
+      [...years].map(([year, items]) => (
+        <li>
+          <a href={`#${year}`}>
+            {year} <span class="count">{items.length}</span>
+          </a>
+        </li>
+      ))
+    }
+  </ul>
+  {
+    [...years].map(([year, items]) => (
+      <section class="archive-group" id={year}>
+        <h2>{year}</h2>
+        <ul class="post-links">
+          {items.map((post) => (
+            <PostLink post={post} />
+          ))}
+        </ul>
+      </section>
+    ))
+  }
+</Base>

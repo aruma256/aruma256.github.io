@@ -1,0 +1,27 @@
+---
+import Base from '../../layouts/Base.astro';
+---
+
+<Base title="検索">
+  <h1 class="page-title">検索</h1>
+  <link rel="stylesheet" href="/pagefind/pagefind-ui.css" />
+  <div id="search">
+    <noscript>検索には JavaScript が必要です。</noscript>
+  </div>
+  <script is:inline src="/pagefind/pagefind-ui.js"></script>
+  <script is:inline>
+    if (window.PagefindUI) {
+      const query = new URLSearchParams(location.search).get('q');
+      const ui = new PagefindUI({
+        element: '#search',
+        showSubResults: true,
+        showImages: false,
+        translations: { placeholder: '記事を検索' },
+      });
+      if (query) ui.triggerSearch(query);
+    } else {
+      // pagefind のインデックスは `npm run build` 時に生成される
+      document.getElementById('search').textContent = '検索インデックスがありません。npm run build 後に npm run preview で確認してください。';
+    }
+  </script>
+</Base>

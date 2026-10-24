@@ -1,0 +1,37 @@
+---
+import PostLink from '../../components/PostLink.astro';
+import Base from '../../layouts/Base.astro';
+import { getPosts, tagSlug } from '../../lib/posts';
+
+const posts = await getPosts();
+const tags = [...Map.groupBy(posts.flatMap((post) => post.tags.map((tag) => ({ tag, post }))), (x) => x.tag)]
+  .map(([tag, items]) => ({ tag, posts: items.map((x) => x.post) }))
+  .sort((a, b) => b.posts.length - a.posts.length || a.tag.localeCompare(b.tag));
+---
+
+<Base title="Posts by Tag">
+  <h1 class="page-title">Posts by Tag</h1>
+  <ul class="term-index">
+    {
+      tags.map(({ tag, posts }) => (
+        <li>
+          <a href={`#${tagSlug(tag)}`}>
+            {tag} <span class="count">{posts.length}</span>
+          </a>
+        </li>
+      ))
+    }
+  </ul>
+  {
+    tags.map(({ tag, posts }) => (
+      <section class="archive-group" id={tagSlug(tag)}>
+        <h2>{tag}</h2>
+        <ul class="post-links">
+          {posts.map((post) => (
+            <PostLink post={post} />
+          ))}
+        </ul>
+      </section>
+    ))
+  }
+</Base>

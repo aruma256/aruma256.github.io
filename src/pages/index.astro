@@ -1,0 +1,12 @@
+---
+import PostSummary from '../components/PostSummary.astro';
+import Base from '../layouts/Base.astro';
+import { getPosts } from '../lib/posts';
+
+const posts = await getPosts();
+---
+
+<Base>
+  <h1 class="page-title">Recent Posts</h1>
+  {posts.map((post) => <PostSummary post={post} />)}
+</Base>

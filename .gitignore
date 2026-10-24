@@ -1,3 +1,10 @@
-vendor
+node_modules/
+dist/
+.astro/
 
+# Jekyll 時代のビルド成果物
+vendor
 _site/
+
+# Playwright CLI output (may contain credentials)
+.playwright-cli/

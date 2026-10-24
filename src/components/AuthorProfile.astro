@@ -1,0 +1,24 @@
+---
+import { AUTHOR } from '../consts';
+import Icon from './Icon.astro';
+---
+
+<div class="author">
+  <img class="author__avatar" src={AUTHOR.avatar} alt={AUTHOR.name} width="110" height="110" />
+  <div class="author__content">
+    <p class="author__name">{AUTHOR.name}</p>
+    <p class="author__bio">{AUTHOR.bio}</p>
+  </div>
+  <ul class="author__links">
+    {
+      AUTHOR.links.map((link) => (
+        <li>
+          <a href={link.url} rel="me">
+            <Icon name={link.icon} />
+            <span>{link.label}</span>
+          </a>
+        </li>
+      ))
+    }
+  </ul>
+</div>

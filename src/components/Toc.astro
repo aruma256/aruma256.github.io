@@ -1,0 +1,28 @@
+---
+import type { MarkdownHeading } from 'astro';
+
+interface Props {
+  headings: MarkdownHeading[];
+}
+
+// 記事によっては本文の見出しに h1 を使っているので、最も浅い見出しから2段階までを表示する
+const minDepth = Math.min(...Astro.props.headings.map((h) => h.depth));
+const headings = Astro.props.headings.filter((h) => h.depth <= minDepth + 1);
+---
+
+{
+  headings.length > 0 && (
+    <nav class="toc" aria-labelledby="toc-title">
+      <details open>
+        <summary id="toc-title">目次</summary>
+        <ol>
+          {headings.map((h) => (
+            <li class:list={[{ 'toc__sub': h.depth > minDepth }]}>
+              <a href={`#${h.slug}`}>{h.text}</a>
+            </li>
+          ))}
+        </ol>
+      </details>
+    </nav>
+  )
+}

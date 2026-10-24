@@ -1,0 +1,17 @@
+---
+// アーカイブ用の1行表示
+import type { Post } from '../lib/posts';
+import Icon from './Icon.astro';
+
+interface Props {
+  post: Post;
+}
+
+const { post } = Astro.props;
+---
+
+<li class="post-link">
+  <time datetime={post.date}>{post.date}</time>
+  <a href={post.url}>{post.title}</a>
+  {post.isLink && <Icon name="link" label="外部サイトの記事" />}
+</li>

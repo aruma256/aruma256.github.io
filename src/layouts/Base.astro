@@ -1,0 +1,114 @@
+---
+import '../styles/global.css';
+import AuthorProfile from '../components/AuthorProfile.astro';
+import Icon from '../components/Icon.astro';
+import { AUTHOR, GA_MEASUREMENT_ID, NAV, SITE_DESCRIPTION, SITE_TITLE } from '../consts';
+
+interface Props {
+  /** 省略時はサイト名のみ */
+  title?: string;
+  description?: string;
+  image?: string;
+  type?: 'website' | 'article';
+  /** ISO 8601 */
+  publishedTime?: string;
+}
+
+const { title, description = SITE_DESCRIPTION, image = AUTHOR.avatar, type = 'website', publishedTime } = Astro.props;
+
+const fullTitle = title ? `${title} - ${SITE_TITLE}` : SITE_TITLE;
+const canonical = new URL(Astro.url.pathname, Astro.site);
+const imageUrl = new URL(image, Astro.site);
+const hasAside = Astro.slots.has('aside');
+---
+
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{fullTitle}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    <link rel="icon" type="image/webp" href="/assets/aruma_icon_mini.webp" />
+    <link rel="alternate" type="application/rss+xml" title={SITE_TITLE} href="/feed.xml" />
+    <link rel="sitemap" href="/sitemap.xml" />
+
+    <meta property="og:site_name" content={SITE_TITLE} />
+    <meta property="og:locale" content="ja_JP" />
+    <meta property="og:type" content={type} />
+    <meta property="og:title" content={title ?? SITE_TITLE} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={imageUrl} />
+    {publishedTime && <meta property="article:published_time" content={publishedTime} />}
+    <meta name="twitter:card" content={image === AUTHOR.avatar ? 'summary' : 'summary_large_image'} />
+    <meta name="twitter:site" content="@aruma256" />
+
+    <script is:inline async src={`https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`}></script>
+    <script is:inline define:vars={{ id: GA_MEASUREMENT_ID }}>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag('js', new Date());
+      gtag('config', id, { anonymize_ip: true });
+    </script>
+  </head>
+  <body>
+    <a class="skip-link" href="#main">本文へスキップ</a>
+    <header class="masthead">
+      <div class="masthead__inner">
+        <a class="site-title" href="/">{SITE_TITLE}</a>
+        <nav class="site-nav" aria-label="メイン">
+          {
+            NAV.map((item) => (
+              <a href={item.url} aria-current={Astro.url.pathname.startsWith(item.url) ? 'page' : undefined}>
+                {item.title}
+              </a>
+            ))
+          }
+          <a class="site-nav__search" href="/search/" aria-label="検索">
+            <Icon name="search" />
+          </a>
+        </nav>
+      </div>
+    </header>
+
+    <div class:list={['layout', { 'layout--with-aside': hasAside }]}>
+      <aside class="layout__author">
+        <AuthorProfile />
+      </aside>
+      {
+        hasAside && (
+          <aside class="layout__aside">
+            <slot name="aside" />
+          </aside>
+        )
+      }
+      <main id="main" class="layout__main">
+        <slot />
+      </main>
+    </div>
+
+    <footer class="site-footer">
+      <div class="site-footer__inner">
+        <ul class="site-footer__links">
+          {
+            AUTHOR.links.map((link) => (
+              <li>
+                <a href={link.url}>
+                  <Icon name={link.icon} /> {link.label}
+                </a>
+              </li>
+            ))
+          }
+          <li>
+            <a href="/feed.xml"><Icon name="rss" /> Feed</a>
+          </li>
+        </ul>
+        <p>&copy; {new Date().getFullYear()} {AUTHOR.name}. Powered by <a href="https://astro.build/">Astro</a>.</p>
+      </div>
+    </footer>
+  </body>
+</html>

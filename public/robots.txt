@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://aruma256.dev/sitemap.xml

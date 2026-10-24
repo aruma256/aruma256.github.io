@@ -1,0 +1,25 @@
+---
+// src/pages 配下の Markdown ページ用レイアウト
+import type { MarkdownHeading } from 'astro';
+import Toc from '../components/Toc.astro';
+import Base from './Base.astro';
+
+interface Props {
+  frontmatter: { title: string; toc?: boolean };
+  headings: MarkdownHeading[];
+}
+
+const { frontmatter, headings } = Astro.props;
+---
+
+<Base title={frontmatter.title}>
+  {frontmatter.toc && <Toc slot="aside" headings={headings} />}
+  <article class="post">
+    <header class="post__header">
+      <h1 class="post__title">{frontmatter.title}</h1>
+    </header>
+    <div class="prose">
+      <slot />
+    </div>
+  </article>
+</Base>
