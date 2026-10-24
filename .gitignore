@@ -1,6 +1,7 @@
 node_modules/
 dist/
 .astro/
+.wrangler/
 
 # Jekyll 時代のビルド成果物
 vendor

@@ -1,0 +1,11 @@
+{
+  "$schema": "./node_modules/wrangler/config-schema.json",
+  "name": "aruma256-github-io",
+  "compatibility_date": "2026-10-01",
+  "assets": {
+    // `npm run build` の出力をそのまま静的配信する (Worker スクリプトなし)
+    "directory": "./dist",
+    "html_handling": "auto-trailing-slash",
+    "not_found_handling": "404-page"
+  }
+}
