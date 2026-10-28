@@ -26,7 +26,7 @@ PythonのPillowという画像処理ライブラリで自分のアイデアを�
 **Claude**: さっそくですが、なぜPythonとPillowを使ってTシャツをデザインしようと思われたのでしょうか？普通は画像編集ソフトを使うと思うのですが。
 
 **aruma**: そうですよね。私も、初めて作ったときは画像編集ソフトで制作しました。
-[![arumaロゴジップパーカーの画像](/assets/2024/2024-12-10-design-tshirt-with-python/aruma-zip-hoodie.png)
+[![グレーのジップパーカーの背面に、黒い手書き風の「ArumA」のロゴが大きくプリントされている](/assets/2024/2024-12-10-design-tshirt-with-python/aruma-zip-hoodie.png)
 https://suzuri.jp/aruma256/designs/13772132](https://suzuri.jp/aruma256/designs/13772132)
 
 それ自体は問題なく完成したのですが、次に「[セグメント木](/posts/segment-tree)」を題材にしたとき、画像編集ソフトで作るのは大変だったのです。
@@ -52,10 +52,10 @@ https://suzuri.jp/aruma256/designs/13772132](https://suzuri.jp/aruma256/designs/
 
 **aruma**: こちらです。
 
-[![ケーニヒスベルクの橋の問題のデザイン](/assets/2024/2024-12-10-design-tshirt-with-python/konigsberg-bridge.png)
+[![白いTシャツの胸元に、ケーニヒスベルクの七つの橋問題をモチーフにしたデザインがプリントされている](/assets/2024/2024-12-10-design-tshirt-with-python/konigsberg-bridge.png)
 https://suzuri.jp/aruma256/designs/16858056](https://suzuri.jp/aruma256/designs/16858056)
 
-![PN接合のエネルギーバンド図のデザイン](/assets/2024/2024-12-10-design-tshirt-with-python/pn-junction.png)
+![黒いパーカーの胸元に、PN接合のエネルギーバンド図をモチーフにしたデザインがプリントされている。3本の横線のうち上下の白い線は中央で段差状に下がり、真ん中のグレーの線はまっすぐ水平に伸びている](/assets/2024/2024-12-10-design-tshirt-with-python/pn-junction.png)
 
 **Claude**: デザインがとても素敵ですね。これらはPythonとPillowで作られたとのことですが、実際のコード作成ではどのような工夫をされましたか？
 
@@ -102,7 +102,7 @@ image.save('squares.png')
 
 **aruma**: このコードを実行すると、以下のような画像が作成されます。
 
-![正方形のデザイン](/assets/2024/2024-12-10-design-tshirt-with-python/squares.png)
+![白い背景の中央に、小さな黒い正方形16個が間隔を空けて横一列に並んでいる。左右には大きな余白がある](/assets/2024/2024-12-10-design-tshirt-with-python/squares.png)
 
 左右に余白を作ってくれましたが、今回私が想像していたのは余白無しで、正方形がちょうど並ぶような配置でした。  
 修正するついでに、色も変えてみましょう。
@@ -144,7 +144,7 @@ image.save('squares_gradient.png')
 
 **aruma**: 新しいコードを実行すると、以下のような画像が作成されます。
 
-![グラデーションの正方形のデザイン](/assets/2024/2024-12-10-design-tshirt-with-python/squares_gradient.png)
+![白い背景の中央に、16個の正方形が隙間なく横一列に並び、画像の左端から右端まで埋めている。色は左端の赤から右端の青へ徐々に変化している](/assets/2024/2024-12-10-design-tshirt-with-python/squares_gradient.png)
 
 このようにコーディングをある程度LLMに任せることで、手作業の負担を減らすことができますし、試行錯誤も容易になります。
 

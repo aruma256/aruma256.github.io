@@ -8,7 +8,7 @@ toc: true
 ChatGPT Plus からの移行先として LibreChat を触ってみました。  
 使い勝手がよく、しばらくメインで使っていくことにしたので、機能とローカルでの動かし方をまとめます。（デプロイ編は別記事にします。）
 
-![LibreChatの画面](/assets/2024/2024-02-14-librechat/librechat-multi-model.webp)
+![LibreChat のチャット画面。「こんにちは」に GPT-3.5 が「こんにちは！何かご用ですか？」と応答し、続く「webpの特徴を3行で説明して」には GPT-4 が WebP の特徴を3文で説明している](/assets/2024/2024-02-14-librechat/librechat-multi-model.webp)
 
 # 背景
 
@@ -37,11 +37,11 @@ ChatGPT Plus は、 OpenAI が提供する ChatGPT のサブスクリプショ�
 
 Light Mode
 
-![LibreChatの画面(Light Mode)](/assets/2024/2024-02-14-librechat/librechat-light.webp)
+![Light Mode の LibreChat の新規チャット画面。左に黒いサイドバー、白いメイン領域の中央に「How can I help you today?」、上部に OpenAI と gpt-4-turbo-preview の選択欄がある](/assets/2024/2024-02-14-librechat/librechat-light.webp)
 
 Dark Mode
 
-![LibreChatの画面(Dark Mode)](/assets/2024/2024-02-14-librechat/librechat-dark.webp)
+![Dark Mode の LibreChat の新規チャット画面。Light Mode と同じレイアウトで、メイン領域が暗いグレーになっている](/assets/2024/2024-02-14-librechat/librechat-dark.webp)
 
 実際に、"社内用ChatGPT" として採用された事例もあるようです。
 
@@ -54,29 +54,29 @@ LibreChat には ChatGPT (Plus) にはない特徴がいくつかあります。
 
 LibreChat では ChatGPT API の他にも、 Google Vertex AI (Gemini) や Azure OpenAI Service など複数のエンドポイントを利用できます。
 
-![Endpointの選択](/assets/2024/2024-02-14-librechat/librechat-endpoints.webp)
+![エンドポイント選択のドロップダウン。OpenAI（選択中）、Google、Bing、Plugins、Anthropic が並んでいる](/assets/2024/2024-02-14-librechat/librechat-endpoints.webp)
 
 OpenAI ChatGPT を利用する場合でも、 `gpt-4-0125-preview` , `gpt-4-1106-preview` のように特定のモデルを選択できます。
 
-![モデルの選択](/assets/2024/2024-02-14-librechat/librechat-openai-models.webp)
+![OpenAI のモデル選択ドロップダウン。gpt-3.5-turbo-0125、gpt-3.5-turbo-16k-0613、gpt-3.5-turbo-16k、gpt-4-turbo-preview（選択中）、gpt-4-0125-preview、gpt-4-1106-preview、gpt-3.5-turbo が並んでいる](/assets/2024/2024-02-14-librechat/librechat-openai-models.webp)
 
 利用時のパラメータも自由に設定できます。
 
-![パラメータの設定](/assets/2024/2024-02-14-librechat/librechat-param-config.webp)
+![パラメータ設定パネル。左にモデル、プリセット名、プロンプトの先頭の入力欄、右に Temperature、Top P、頻度によるペナルティ、既存性によるペナルティのスライダーと、画像の再送信・画像の詳細の設定がある](/assets/2024/2024-02-14-librechat/librechat-param-config.webp)
 
 LibreChat にはユーザーアカウントの管理機能が組み込まれており、新規登録やログインができます。
 
-![ログイン画面](/assets/2024/2024-02-14-librechat/librechat-login.webp)
+![「おかえりなさい」と書かれたログイン画面。メールアドレスとパスワードの入力欄、パスワードを忘れた場合のリンク、「続ける」ボタン、新規登録へのリンクがある](/assets/2024/2024-02-14-librechat/librechat-login.webp)
 
 そして、各エンドポイントのAPIキーは、LibreChat の各ユーザーアカウントが個別に登録し使用します。
 
-![APIキーの設定](/assets/2024/2024-02-14-librechat/librechat-api-key-input.webp)
+![「API Key の設定: OpenAI」ダイアログ。有効期限のドロップダウンが開いており、30分、2時間、12時間、1日、7日、30日から選べる。下に API キーの入力欄と送信ボタンがある](/assets/2024/2024-02-14-librechat/librechat-api-key-input.webp)
 
 （APIキーは、設定ファイルに埋め込んで全ユーザーに一括解放することもできます。）
 
 また、ベータ機能ですが、チャット中のモデル切り替えができるようになっていました。
 
-![チャット途中でのモデル切り替え](/assets/2024/2024-02-14-librechat/librechat-multi-model.webp)
+![1つの会話の中でモデルを切り替えたチャット画面。最初の応答は GPT-3.5、2つ目の応答は GPT-4 が返している](/assets/2024/2024-02-14-librechat/librechat-multi-model.webp)
 
 # LibreChat をローカルで動かす (v0.6.6)
 
