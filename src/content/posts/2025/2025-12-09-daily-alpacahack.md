@@ -92,7 +92,7 @@ print(*decoded, sep='')
 tar.gz ファイルとIPv4のURLがありました。tar.gz の中には、Dockerfile、compose.yaml、frontend/backend/secret ディレクトリが入っていました。3つのサービスをdocker composeで立ち上げる構成のようです。  
 立ち上げて `/` にアクセスすると、以下のような画面が表示されました。
 
-![emojifyの画面](/assets/2025/2025-12-09-daily-alpacahack/emojify.png)
+![Emojify の画面。テキスト入力欄（「pizza」と入力済み）と Show ボタンがあり、その下にピザの絵文字が大きく表示されている](/assets/2025/2025-12-09-daily-alpacahack/emojify.png)
 
 各要素について詳しく見ていきます。
 
