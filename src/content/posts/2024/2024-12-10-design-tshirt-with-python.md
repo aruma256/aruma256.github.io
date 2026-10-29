@@ -52,7 +52,7 @@ https://suzuri.jp/aruma256/designs/13772132](https://suzuri.jp/aruma256/designs/
 
 **aruma**: こちらです。
 
-[![白いTシャツの胸元に、ケーニヒスベルクの七つの橋問題をモチーフにしたデザインがプリントされている。青い長方形のブロックが横一列に並び、ブロック同士が細い連結部でつながっている](/assets/2024/2024-12-10-design-tshirt-with-python/konigsberg-bridge.png)
+[![白いTシャツの胸元に、ケーニヒスベルクの七つの橋問題をモチーフにしたデザインがプリントされている](/assets/2024/2024-12-10-design-tshirt-with-python/konigsberg-bridge.png)
 https://suzuri.jp/aruma256/designs/16858056](https://suzuri.jp/aruma256/designs/16858056)
 
 ![黒いパーカーの胸元に、PN接合のエネルギーバンド図をモチーフにしたデザインがプリントされている。3本の横線のうち上下の白い線は中央で段差状に下がり、真ん中のグレーの線はまっすぐ水平に伸びている](/assets/2024/2024-12-10-design-tshirt-with-python/pn-junction.png)
