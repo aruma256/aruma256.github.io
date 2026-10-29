@@ -12,9 +12,11 @@ interface Props {
   type?: 'website' | 'article';
   /** ISO 8601 */
   publishedTime?: string;
+  /** 同じ内容の Markdown 版の URL */
+  markdownUrl?: string;
 }
 
-const { title, description = SITE_DESCRIPTION, image = AUTHOR.avatar, type = 'website', publishedTime } = Astro.props;
+const { title, description = SITE_DESCRIPTION, image = AUTHOR.avatar, type = 'website', publishedTime, markdownUrl } = Astro.props;
 
 const fullTitle = title ? `${title} - ${SITE_TITLE}` : SITE_TITLE;
 // build.format: 'file' だとビルド時の pathname が /posts.html や /index.html になるので、配信される URL に揃える
@@ -34,6 +36,7 @@ const hasAside = Astro.slots.has('aside');
     <link rel="icon" type="image/webp" href="/assets/aruma_icon_mini.webp" />
     <link rel="alternate" type="application/rss+xml" title={SITE_TITLE} href="/feed.xml" />
     <link rel="sitemap" href="/sitemap.xml" />
+    {markdownUrl && <link rel="alternate" type="text/markdown" href={markdownUrl} />}
 
     <meta property="og:site_name" content={SITE_TITLE} />
     <meta property="og:locale" content="ja_JP" />

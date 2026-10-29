@@ -31,6 +31,7 @@ const { toc, image } = post.entry.data;
   image={image}
   type="article"
   publishedTime={pubDate(post).toISOString()}
+  markdownUrl={`${post.url}.md`}
 >
   {toc && <Toc slot="aside" headings={headings} />}
   <article class="post" data-pagefind-body>
