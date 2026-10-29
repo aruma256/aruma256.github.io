@@ -25,16 +25,16 @@ lilToonファーを使うため、まずはシェーダーをlilToonに変更し
 1. Unityでアバターのプロジェクトを開く
 1. lilToonをダウンロードし、プロジェクトにインポートする
 1. アバターのマテリアルを選択し、 **Ctrl+Dで複製する**
-![](/assets/2022/2022-11-02-liltoon-fur/material_ears_lilToon.jpg)
+![Project ウィンドウの Assets > Materials フォルダ。マテリアル body、clothes、ears と、ears を複製した ears_lilToon が並んでいる](/assets/2022/2022-11-02-liltoon-fur/material_ears_lilToon.jpg)
     * サンプル画像では `ears` を複製し、 `ears_lilToon` を作った
 1. アバターBodyの使用マテリアルを複製先に変更する
-![](/assets/2022/2022-11-02-liltoon-fur/change_material.png)
+![Inspector の Materials 欄。Element 4 が ears_lilToon に変更されている](/assets/2022/2022-11-02-liltoon-fur/change_material.png)
     * サンプル画像では `ears` → `ears_lilToon`
 1. 作成されたマテリアルのシェーダーを変更する
     * before
-    ![](/assets/2022/2022-11-02-liltoon-fur/shader_before.png)
+    ![マテリアル ears_lilToon の Inspector。Shader が arktoon/Opaque になっている](/assets/2022/2022-11-02-liltoon-fur/shader_before.png)
     * after
-    ![](/assets/2022/2022-11-02-liltoon-fur/shader_after.png)
+    ![マテリアル ears_lilToon の Inspector。Shader が lilToon に変更されている](/assets/2022/2022-11-02-liltoon-fur/shader_after.png)
 
 統一感のため、この作業はファー適用対象だけでなく、全身のマテリアルに対して行うことを推奨します。  
 
@@ -43,13 +43,13 @@ lilToonファーを使うため、まずはシェーダーをlilToonに変更し
 # 描画モード"ファー"用のマテリアルを用意する
 
 1. アバターのマテリアルを選択し、 **Ctrl+Dで複製する**
-![](/assets/2022/2022-11-02-liltoon-fur/material_ears_lilToon_fur.png)
+![Project ウィンドウの Assets > Materials フォルダ。ears_lilToon を複製した ears_lilToon_fur が追加されている](/assets/2022/2022-11-02-liltoon-fur/material_ears_lilToon_fur.png)
     * サンプル画像では `ears_lilToon` を複製し、 `ears_lilToon_fur` を作った
 1. アバターBodyの使用マテリアルを複製先に変更する
-![](/assets/2022/2022-11-02-liltoon-fur/change_material_fur.png)
+![Inspector の Materials 欄。Element 4 が ears_lilToon_fur に変更されている](/assets/2022/2022-11-02-liltoon-fur/change_material_fur.png)
     * サンプル画像では `ears_lilToon` → `ears_lilToon_fur`
 1. 作成されたマテリアルのシェーダーの描画モードを `[高負荷] ファー (2パス)` に変更する
-![](/assets/2022/2022-11-02-liltoon-fur/render_mode_fur.png)
+![lilToon 1.3.6 のシェーダー設定。描画モードで「[高負荷] ファー (2パス)」が選択されている](/assets/2022/2022-11-02-liltoon-fur/render_mode_fur.png)
     * 他のファー系描画モードでも可
 
 **(2022/11/04 更新) 以降はファーの調整の概要を書いていたのですが、詳細な設定方法の解説記事が公開されていたのでこちらをオススメします** → [lilToonのファーの設定いろいろ
@@ -66,11 +66,11 @@ lilToonファーを使うため、まずはシェーダーをlilToonに変更し
 
 before
 
-![](/assets/2022/2022-11-02-liltoon-fur/fur_shader_before.jpg)
+![ファー設定を調整する前のアバターの耳。毛の表現がなく、ポリゴンの面がそのまま見えている](/assets/2022/2022-11-02-liltoon-fur/fur_shader_before.jpg)
 
 after
 
-![](/assets/2022/2022-11-02-liltoon-fur/fur_shader_after.jpg)
+![ファー設定を調整した後のアバターの耳。輪郭に細かい毛が生えているが、毛の向きはそろっていない](/assets/2022/2022-11-02-liltoon-fur/fur_shader_after.jpg)
 
 # ノーマルマップ用の画像を作成し適用する
 
@@ -81,15 +81,15 @@ after
 
 このツールでノーマルマップを作成し、プロジェクトにインポートし、シェーダー設定のノーマルマップに適用します。
 
-![](/assets/2022/2022-11-02-liltoon-fur/normalmap_applied.jpeg)
+![lilToon のファー設定欄。ノーマルマップにテクスチャが適用され、強度は 0.9、ノイズの Tiling は X・Y とも 64 になっている](/assets/2022/2022-11-02-liltoon-fur/normalmap_applied.jpeg)
 
 before
 
-![](/assets/2022/2022-11-02-liltoon-fur/fur_shader_after.jpg)
+![ファー設定を調整した後のアバターの耳。輪郭に細かい毛が生えているが、毛の向きはそろっていない](/assets/2022/2022-11-02-liltoon-fur/fur_shader_after.jpg)
 
 after
 
-![](/assets/2022/2022-11-02-liltoon-fur/fur_shader_normalmap.jpg)
+![ノーマルマップを適用した後のアバターの耳。毛並みが整い、毛の流れに向きが付いている](/assets/2022/2022-11-02-liltoon-fur/fur_shader_normalmap.jpg)
 
 基本的な設定ができました。
 

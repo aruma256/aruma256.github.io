@@ -43,7 +43,7 @@ location: https://aruma256.dev/
 予め、お好きなドメインを取得しておきます。  
 GitHub Pages のユーザーサイトを管理するリポジトリ（ `[username].github.io` ）のPages設定を開き、Custom domain に取得したドメインを入力します。
 
-![GitHub Pages の設定画面](/assets/2023/2023-11-13-github-pages-custom-domain/github_pages_input_custom_doamin.png)
+![GitHub Pages 設定画面の Custom domain 欄。空の入力欄と Save・Remove ボタンがある](/assets/2023/2023-11-13-github-pages-custom-domain/github_pages_input_custom_doamin.png)
 
 すると、主ブランチにてリポジトリ直下に `CNAME` ファイルが作成されます。これは先程入力したドメインを記述したテキストファイルです。  
 [実際のコミットがこちら](https://github.com/aruma256/aruma256.github.io/commit/ba02b99165ac1ede04629c49832cf04bd35e1ca3)  
@@ -68,7 +68,7 @@ AAAAレコードも追加しておくとよいでしょう。
 
 私の場合はムームードメインを使っているので、ムームーDNSのカスタム設定画面から以下のように設定しました。
 
-![ムームーDNSのカスタム設定画面](/assets/2023/2023-11-13-github-pages-custom-domain/muumuu_dns.png)
+![ムームーDNSのカスタム設定画面。A レコードに 185.199.108.153〜185.199.111.153 の4件、AAAA レコードに 2606:50c0:8000::153〜2606:50c0:8003::153 の4件を設定している](/assets/2023/2023-11-13-github-pages-custom-domain/muumuu_dns.png)
 
 なお、公式ドキュメントではApexドメインを使う場合にも `www` サブドメインの設定を行うことが推奨されています。
 
@@ -92,7 +92,7 @@ Aレコード、ヨシ！
 
 GitHubリポジトリのPages設定に戻り、Custom domain の欄に "DNS check successful" と表示されていればOKです。
 
-![GitHub Pages の設定画面](/assets/2023/2023-11-13-github-pages-custom-domain/dns_check_successful.png)
+![GitHub Pages 設定画面の Custom domain 欄。aruma256.dev が入力され、下に緑字で「DNS check successful」と表示されている](/assets/2023/2023-11-13-github-pages-custom-domain/dns_check_successful.png)
 
 Google Search Console などを利用している場合は、そちらの設定も忘れずに行いましょう。
 

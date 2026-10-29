@@ -30,7 +30,7 @@ PCはVSCodeインストール済み・ssh鍵が生成済みの状態から始め
 
 1. DSMのパッケージセンターから、Dockerパッケージをインストールする。
 1. `Dockerアプリ - イメージ - 追加 - URLから追加` で `ubuntu` を指定し、イメージをダウンロードする。  
-![pull container](/assets/2022/2022-03-24-synology-nas-vscode/pull_container.png)
+![Synology の Docker アプリの「URL から追加」ダイアログ。ハブページまたはレポジトリ URL に ubuntu と入力され、ユーザー名とパスワードは空欄になっている](/assets/2022/2022-03-24-synology-nas-vscode/pull_container.png)
     * ダウンロード時、オプション(ユーザー名/パスワード)は空欄にする。
         * 今回は `ubuntu:20.04` を選択した。
 
@@ -39,7 +39,7 @@ PCはVSCodeインストール済み・ssh鍵が生成済みの状態から始め
 1. ダウンロードしたイメージを選択し、`起動`
 1. 任意のコンテナ名をつける。
 1. `詳細設定` - `ポート設定` - `追加` で **コンテナポート 22 TCP** を指定する。  
-![container port](/assets/2022/2022-03-24-synology-nas-vscode/container_port.png)
+![コンテナの詳細設定のポート設定タブ。ローカルポートが自動、コンテナのポートが 22、タイプが TCP の行が追加されている](/assets/2022/2022-03-24-synology-nas-vscode/container_port.png)
     * ローカルポートは任意（こだわりが無ければ`自動`のままでOK）
         * このポートがSSH接続時にPCから指定するポート番号となる
 1. コンテナの作成を完了する。
@@ -77,7 +77,7 @@ PCはVSCodeインストール済み・ssh鍵が生成済みの状態から始め
     * 方法1: VSCode内の Extensions で `remote ssh` と検索する。
     * 方法2: [Remote - SSH](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-ssh) からインストールする。
 1. VSCodeウィンドウ左下の 緑色のボタン（Open a Remote Window）をクリックする。    
-![open a remote window](/assets/2022/2022-03-24-synology-nas-vscode/open-a-remote-window.png)
+![VSCode ウィンドウ左下の緑色のボタンにカーソルを合わせ、「Open a Remote Window」のツールチップが表示されている](/assets/2022/2022-03-24-synology-nas-vscode/open-a-remote-window.png)
 1. `Connect to Host` → `Add New SSH Host` を選択する。
 1. `ssh -p ローカルポート番号 root@NASのIPアドレス` を入力する。
     * 例：NASのIPアドレスが `192.168.11.16`、 ローカルポート番号が `40000` なら `ssh -p 40000 root@192.168.11.16`

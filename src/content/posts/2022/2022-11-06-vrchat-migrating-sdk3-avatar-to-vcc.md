@@ -46,11 +46,11 @@ VRChat Creator Companion (VCC) に移行しましょう。
 1. VCCを起動
 1. VCCの `ADD` から、移行対象のプロジェクトを選択
 1. リストに追加されたプロジェクトを選択（ここでは `Kurena-modded` ）  
-![リストに追加されたプロジェクトを選択](/assets/2022/2022-11-06-vrchat-migrating-sdk3-avatar-to-vcc/vcc_import.png)
+![VRChat Creator Companion の Projects 画面。追加したプロジェクト Kurena-modded が赤丸で囲まれている](/assets/2022/2022-11-06-vrchat-migrating-sdk3-avatar-to-vcc/vcc_import.png)
 1. `Migrate` をクリック  
-![Migrateをクリック](/assets/2022/2022-11-06-vrchat-migrating-sdk3-avatar-to-vcc/vcc_click_migrate.png)
+![Kurena-modded のプロジェクト画面。「Legacy SDK3 Avatar Project - Migrate First」と表示され、Refresh、Migrate、Open Folder、Make Backup のボタンのうち Migrate が赤丸で囲まれている。Path は黄色で隠されている](/assets/2022/2022-11-06-vrchat-migrating-sdk3-avatar-to-vcc/vcc_click_migrate.png)
 1. 移行方式を選択  
-![移行方式を選択](/assets/2022/2022-11-06-vrchat-migrating-sdk3-avatar-to-vcc/vcc_click_migrate_in_place.png)
+![移行方式の選択ダイアログ。旧 SDK を除いたコピーを作るか、バックアップやバージョン管理があるならプロジェクトに直接適用できるという説明と、Migrate a copy、Migrate in place（I HAVE A BACKUP）、Cancel のボタンがある](/assets/2022/2022-11-06-vrchat-migrating-sdk3-avatar-to-vcc/vcc_click_migrate_in_place.png)
     * 旧プロジェクトの併用はしない、git等のバージョン管理を使用している という理由から `Migrate in place` を選択しました。
     * 旧プロジェクトを併用する場合は `Migrate a copy` を選ぶと良さそうです。
 1. 移行処理の完了を待つ（元の画面に戻り、画面下に `Sucessfully Migrated ...` が出れば成功の模様 ）
@@ -58,7 +58,7 @@ VRChat Creator Companion (VCC) に移行しましょう。
 差分をコミットしておく
 1. `Open Project` をクリックしてプロジェクトを開く
 1. (optional) Blueprint ID を更新する  
-![移行方式を選択](/assets/2022/2022-11-06-vrchat-migrating-sdk3-avatar-to-vcc/update_blueprint_id.png)
+![Pipeline Manager (Script) の Inspector。Blueprint ID の値は黄色で隠され、その下の Detach (Optional) ボタンが赤丸で囲まれている](/assets/2022/2022-11-06-vrchat-migrating-sdk3-avatar-to-vcc/update_blueprint_id.png)
     * 必須ではありませんが、念のため既存アバターの置換を避けたかったので、Blueprint ID を更新しました。
 1. アバターをアップロードし、VRChat内で動作確認する
     * 移動 : 前後左右・ジャンプ

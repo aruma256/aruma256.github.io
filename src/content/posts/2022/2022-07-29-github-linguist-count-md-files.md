@@ -10,15 +10,15 @@ MarkdownファイルをGitHubの言語統計のカウント対象に設定する
 
 before
 
-<img src="/assets/2022/2022-07-29-github-linguist-count-md-files/linguist-stat-before.png" width="50%" />
+<img src="/assets/2022/2022-07-29-github-linguist-count-md-files/linguist-stat-before.png" width="50%" alt="GitHub リポジトリの Languages 欄（変更前）。Java 40.3%、HTML 36.5%、Ruby 23.2% になっている" />
 
 多数あるMarkdownファイルがカウントされず、Gemfileなどわずかなコード片から言語統計が作られてしまっている
 
 after
 
-<img src="/assets/2022/2022-07-29-github-linguist-count-md-files/linguist-stat-after.png" width="50%" />
+<img src="/assets/2022/2022-07-29-github-linguist-count-md-files/linguist-stat-after.png" width="50%" alt="GitHub リポジトリの Languages 欄（変更後）。Markdown 98.5%、Other 1.5% になっている" />
 
-<img src="/assets/2022/2022-07-29-github-linguist-count-md-files/linguist-summary-after.png" width="50%" />
+<img src="/assets/2022/2022-07-29-github-linguist-count-md-files/linguist-summary-after.png" width="50%" alt="リポジトリ一覧での aruma256.github.io の表示。言語として Markdown が表示されている" />
 
 リポジトリ一覧の言語表示もJavaからMarkdownに変わった
 
