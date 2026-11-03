@@ -1,12 +1,90 @@
 ---
-import PostSummary from '../components/PostSummary.astro';
+import { Font } from 'astro:assets';
+import HomeTile from '../components/HomeTile.astro';
+import { AUTHOR } from '../consts';
 import Base from '../layouts/Base.astro';
 import { getPosts } from '../lib/posts';
 
-const posts = await getPosts();
+const recentPosts = (await getPosts()).slice(0, 5);
 ---
 
-<Base>
-  <h1 class="page-title">Recent Posts</h1>
-  {posts.map((post) => <PostSummary post={post} />)}
+<Base fullWidth>
+  <Font slot="head" cssVariable="--font-display" />
+  <div class="home">
+    <div class="home__grid">
+      <div class="home-hero">
+        <h1>楽しい<br /><span class="home-hero__accent">ショートカット</span>を<br />作る。</h1>
+      </div>
+
+      <section class="tile home-profile" aria-labelledby="home-profile-name">
+        <img class="home-profile__logo" src={AUTHOR.avatar} alt="" width="208" height="83" />
+        <div>
+          <h2 class="home-profile__name" id="home-profile-name">{AUTHOR.name}</h2>
+          <p class="home-profile__role">Webエンジニア</p>
+        </div>
+        <div class="home-profile__links">
+          <a class="home-profile__primary" href="/profile">プロフィール</a>
+          <a href="https://github.com/aruma256" rel="me">GitHub</a>
+        </div>
+      </section>
+
+      <HomeTile tag="資格" href="/profile#it関連">
+        <h2 class="tile__title">ネットワーク<wbr />スペシャリスト</h2>
+        <p class="tile__note">2024年 合格</p>
+      </HomeTile>
+
+      <HomeTile tag="仕事" href="https://tech.pepabo.com/2025/12/26/db-migration-for-variation/">
+        <h2 class="tile__title">無停止 DB スキーマ移行</h2>
+        <p class="tile__note">tech.pepabo.com · 2025年12月</p>
+      </HomeTile>
+
+      <HomeTile tag="個人制作" href="https://www.curseforge.com/minecraft/mc-mods/lottweaks">
+        <p class="tile__stat tile__stat--accent">187k<small>DL</small></p>
+        <h2 class="tile__title">LotTweaks</h2>
+        <p class="tile__note">Minecraft 建築勢の手間を減らす Mod</p>
+      </HomeTile>
+
+      <HomeTile tag="個人制作" href="https://aruma256.booth.pm/items/5421397">
+        <h2 class="tile__title">UdonPermission</h2>
+        <p class="tile__note">VRChat のワールド制作者・イベント主催者向け権限管理ギミック</p>
+      </HomeTile>
+
+      <section class="tile home-posts" aria-labelledby="home-posts-heading">
+        <div class="home-posts__heading">
+          <h2 id="home-posts-heading">最近の記事</h2>
+          <a href="/posts">すべての記事</a>
+        </div>
+        <ul class="home-posts__list">
+          {
+            recentPosts.map((post) => (
+              <li>
+                <a href={post.url}>
+                  <span class="home-posts__meta">
+                    <time datetime={post.date}>{post.date}</time>
+                    {post.isLink && <span>{new URL(post.url).host}</span>}
+                  </span>
+                  <span class="home-posts__title">{post.title}</span>
+                </a>
+              </li>
+            ))
+          }
+        </ul>
+      </section>
+
+      <HomeTile tag="AtCoder" href="https://atcoder.jp/users/Aruma256" class="tile--atcoder">
+        <p class="tile__stat">水色</p>
+        <p class="tile__note">最高レート 1449</p>
+      </HomeTile>
+
+      <HomeTile tag="趣味" href="/profile#その他">
+        <h2 class="tile__title">謎解き能力検定 2級</h2>
+        <p class="tile__note">第3回 · 1276位 / 4395人中</p>
+      </HomeTile>
+
+      <HomeTile tag="AI">
+        <p class="tile__note">推しLLM</p>
+        <p class="tile__title">Opus 5.5</p>
+      </HomeTile>
+    </div>
+  </div>
 </Base>

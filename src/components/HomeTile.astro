@@ -1,0 +1,18 @@
+---
+// トップページのタイル。href を渡すとタイル全体がリンクになる
+interface Props {
+  tag: string;
+  href?: string;
+  class?: string;
+}
+
+const { tag, href, class: className } = Astro.props;
+const Element = href ? 'a' : 'div';
+---
+
+<Element class:list={['tile', className]} href={href}>
+  <span class="tile__tag">{tag}</span>
+  <div>
+    <slot />
+  </div>
+</Element>

@@ -14,9 +14,11 @@ interface Props {
   publishedTime?: string;
   /** 同じ内容の Markdown 版の URL */
   markdownUrl?: string;
+  /** 著者プロフィール欄を出さず、本文を全幅で表示する */
+  fullWidth?: boolean;
 }
 
-const { title, description = SITE_DESCRIPTION, image = AUTHOR.avatar, type = 'website', publishedTime, markdownUrl } = Astro.props;
+const { title, description = SITE_DESCRIPTION, image = AUTHOR.avatar, type = 'website', publishedTime, markdownUrl, fullWidth = false } = Astro.props;
 
 const fullTitle = title ? `${title} - ${SITE_TITLE}` : SITE_TITLE;
 // build.format: 'file' だとビルド時の pathname が /posts.html や /index.html になるので、配信される URL に揃える
@@ -58,6 +60,7 @@ const hasAside = Astro.slots.has('aside');
       gtag('js', new Date());
       gtag('config', id, { anonymize_ip: true });
     </script>
+    <slot name="head" />
   </head>
   <body>
     <a class="skip-link" href="#main">本文へスキップ</a>
@@ -79,21 +82,27 @@ const hasAside = Astro.slots.has('aside');
       </div>
     </header>
 
-    <div class:list={['layout', { 'layout--with-aside': hasAside }]}>
-      <aside class="layout__author">
-        <AuthorProfile />
-      </aside>
-      {
-        hasAside && (
-          <aside class="layout__aside">
-            <slot name="aside" />
+    {
+      fullWidth ? (
+        <main id="main">
+          <slot />
+        </main>
+      ) : (
+        <div class:list={['layout', { 'layout--with-aside': hasAside }]}>
+          <aside class="layout__author">
+            <AuthorProfile />
           </aside>
-        )
-      }
-      <main id="main" class="layout__main">
-        <slot />
-      </main>
-    </div>
+          {hasAside && (
+            <aside class="layout__aside">
+              <slot name="aside" />
+            </aside>
+          )}
+          <main id="main" class="layout__main">
+            <slot />
+          </main>
+        </div>
+      )
+    }
 
     <footer class="site-footer">
       <div class="site-footer__inner">

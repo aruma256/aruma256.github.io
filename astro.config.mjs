@@ -1,6 +1,6 @@
 // @ts-check
 import { unified } from '@astrojs/markdown-remark';
-import { defineConfig } from 'astro/config';
+import { defineConfig, fontProviders } from 'astro/config';
 import remarkCjkFriendly from 'remark-cjk-friendly';
 
 export default defineConfig({
@@ -11,6 +11,14 @@ export default defineConfig({
   build: {
     format: 'file',
   },
+  fonts: [
+    {
+      provider: fontProviders.google(),
+      name: 'Zen Maru Gothic',
+      cssVariable: '--font-display',
+      weights: [900],
+    },
+  ],
   markdown: {
     // デフォルトの Sätteri には CJK 向けの強調補正がないため、remark/rehype を使う
     processor: unified({
